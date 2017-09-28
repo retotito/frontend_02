@@ -1,0 +1,9 @@
+.wrapper {
+    background-color: lightblue;
+}
+
+@media screen and (min-width: 899px) {
+    .wrapper {
+        display: none;
+    }
+}

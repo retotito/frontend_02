@@ -1,0 +1,17 @@
+.wrapper {
+    box-sizing: border-box;
+    position: relative;
+    background-color: lightblue;
+    box-shadow: 1px 1px 4px 1px rgba(0,0,0,0.1);
+}
+
+#logo {
+    margin: 20px 0px 16px 20px;
+    width: 400px;
+}
+
+@media screen and (max-width: 900px) {
+    .wrapper {
+        display: none;
+    }
+}

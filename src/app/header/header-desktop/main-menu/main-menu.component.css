@@ -1,0 +1,24 @@
+#main-nav {
+    position: absolute;
+    bottom: 0px;
+    right: 0px;
+}
+
+#main-nav>ul>li {
+    box-sizing: border-box;
+    height: 46px;
+    padding: 0px 0px 0px 0px;
+    float: left;
+    list-style-type: none;
+    list-style: none;
+    display: block;
+    position: relative;
+    padding-left: 20px;
+    padding-right: 20px;
+}
+
+#main-nav>ul>li>a {
+    font-size: 24px;
+    color: #ffffff;
+    text-decoration: none;
+}

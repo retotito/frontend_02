@@ -1,0 +1,9 @@
+#wrapper-content {
+    box-sizing: border-box;
+    max-width: 1280px;
+    margin-left: auto;
+    margin-right: auto; 
+    min-height: calc(100vh - 107px);
+    padding: 20px;
+    background-color: #ffffff;
+}
