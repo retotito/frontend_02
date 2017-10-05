@@ -1,3 +1,6 @@
-<p>
-  page-gallery works!
-</p>
+<div id="rk_gridWrapper" >
+  <div *ngFor="let item of items" class="rk_gridItem">
+    <img (load)="gridIsLoadet()" src="{{item.src}}">
+  </div>
+</div>
+

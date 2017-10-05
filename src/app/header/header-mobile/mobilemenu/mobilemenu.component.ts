@@ -15,11 +15,13 @@ import {
   animations: [
     trigger('menuState', [
       state('open', style({
-        transform: 'translateX(-100%)',
+        //transform: 'translateX(-100%)',
+        left: '-100%',
         display: 'block'
       })),
       state('closed',   style({
-        transform: 'translateX(0px)',
+        //transform: 'translateX(0px)',
+        left: '0px',
         display: 'none'
       })),
       transition('closed <=> open', animate('200ms ease-in')),

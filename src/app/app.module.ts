@@ -28,6 +28,7 @@ import { HttpModule } from '@angular/http';
 import { TodosComponent } from './pages/todos/todos.component';
 import { AnimationsComponent } from './pages/animations/animations.component';
 import { MobilemenuComponent } from './header/header-mobile/mobilemenu/mobilemenu.component';
+import { MasonryModule } from 'angular2-masonry';
 
 @NgModule({
   declarations: [
@@ -55,6 +56,7 @@ import { MobilemenuComponent } from './header/header-mobile/mobilemenu/mobilemen
     ReactiveFormsModule,
     BrowserModule,
     BrowserAnimationsModule,
+    MasonryModule,
     RouterModule.forRoot([
       {path: '',component: PageHomeComponent},
       {path: 'about',component: PageAboutComponent},
