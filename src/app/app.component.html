@@ -1,6 +1,8 @@
 <!--The content below is only a placeholder and can be replaced.-->
 <app-header></app-header>
-<div id="wrapper">
+<div id="wrapper" 
+    [style.position]="this.mmService.isOpen ? 'fixed' : 'relative'"
+>
     <div id="wrapper-content">
         <router-outlet></router-outlet>
     </div>

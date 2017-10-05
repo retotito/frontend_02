@@ -1,11 +1,59 @@
 :host {
     position: absolute;
-    top: 80px;
-    left: 0px;
+    top: 0px;
+    right: -100%;
     display: block;
     box-sizing: border-box;
     width: 100%;
     height: auto;
-    background-color: pink;
-    
+}
+
+#mmWrapper {
+    position: absolute;
+    top: 80px;
+    min-height: calc(100vh - 81px);
+    width: 100%;
+    box-sizing: border-box;
+    padding: 0px 20px 20px 20px;
+    background-color: lightblue;
+}
+
+#main-nav-mobile {
+    text-align: center;
+    margin-top: 50px;
+}
+
+#main-nav-mobile>ul {
+    padding: 0px;
+    display: inline-block;
+    text-align: left;
+}
+
+#main-nav-mobile>ul>li {
+    box-sizing: border-box;
+    padding: 0px 0px 0px 0px;
+    list-style-type: none;
+    list-style: none;
+    display: block;
+    position: relative;
+    margin-bottom: 20px;
+}
+
+
+#main-nav-mobile>ul>li>a {
+    font-size: 30px;
+    color: #ffffff;
+    text-decoration: none;
+}
+
+#main-nav-mobile>ul>li:not(.active_menu) a {
+    border-bottom: rgba(255,255,255,0) solid 2px;
+}
+
+#main-nav-mobile>ul>li>a:hover {
+    border-bottom: rgba(255,255,255,1) solid 2px;
+}
+
+.active_menu a {
+    border-bottom: rgba(255,255,255,1) solid 2px;
 }
