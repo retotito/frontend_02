@@ -1,7 +1,10 @@
+import { MobileMenuService } from './services/mobile-menu.service';
+import { TodosService } from './services/todos.service';
 import { AuthService } from './auth/auth.service';
 import { BrowserModule } from '@angular/platform-browser';
 import { NgModule } from '@angular/core';
 import { RouterModule } from '@angular/router';
+import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 
 import { AppComponent } from './app.component';
 import { MainMenuComponent } from './header/header-desktop/main-menu/main-menu.component';
@@ -22,6 +25,9 @@ import { AUTH_ROUTES } from './pages/authentication/auth.routes';
 import { AuthwidgetComponent } from './authwidget/authwidget.component';
 import { ReactiveFormsModule } from '@angular/forms';
 import { HttpModule } from '@angular/http';
+import { TodosComponent } from './pages/todos/todos.component';
+import { AnimationsComponent } from './pages/animations/animations.component';
+import { MobilemenuComponent } from './header/header-mobile/mobilemenu/mobilemenu.component';
 
 @NgModule({
   declarations: [
@@ -40,21 +46,31 @@ import { HttpModule } from '@angular/http';
     LogoutComponent,
     AuthenticationComponent,
     AuthwidgetComponent,
+    TodosComponent,
+    AnimationsComponent,
+    MobilemenuComponent,
   ],
   imports: [
     HttpModule,
     ReactiveFormsModule,
     BrowserModule,
+    BrowserAnimationsModule,
     RouterModule.forRoot([
       {path: '',component: PageHomeComponent},
       {path: 'about',component: PageAboutComponent},
       {path: 'projects',component: PageProjectsComponent},
       {path: 'gallery',component: PageGalleryComponent},
       {path: 'account',component: PageAccountComponent},
-      {path: 'auth',component: AuthenticationComponent, children: AUTH_ROUTES}
+      {path: 'auth',component: AuthenticationComponent, children: AUTH_ROUTES},
+      {path: 'todos',component: TodosComponent},
+      {path: 'animations',component: AnimationsComponent}
     ])
   ],
-  providers: [AuthService],
+  providers: [
+    AuthService,
+    TodosService,
+    MobileMenuService
+    ],
   bootstrap: [AppComponent]
 })
 export class AppModule { }

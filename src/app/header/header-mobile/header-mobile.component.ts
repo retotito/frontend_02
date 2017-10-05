@@ -1,3 +1,4 @@
+import { MobileMenuService } from './../../services/mobile-menu.service';
 import { Component, OnInit } from '@angular/core';
 
 @Component({
@@ -7,7 +8,13 @@ import { Component, OnInit } from '@angular/core';
 })
 export class HeaderMobileComponent implements OnInit {
 
-  constructor() { }
+  constructor(private mmService: MobileMenuService) { }
+  
+
+  triggerMobileMenu () {
+    this.mmService.isOpen = !this.mmService.isOpen;
+    console.log("MMservice: " + this.mmService.isOpen);
+  }
 
   ngOnInit() {
   }

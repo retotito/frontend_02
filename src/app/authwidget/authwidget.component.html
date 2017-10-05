@@ -1,5 +1,5 @@
 <ul class="authwidget">
     <!-- <li ><a class="nav-link" routerLinkActive="active" [routerLink]="['signup']">Signup</a></li>-->
-    <li ><a class="nav-link" routerLinkActive="active" [routerLink]="['auth/signin']">Signin</a></li>
-    <!--<li ><a class="nav-link" routerLinkActive="active" [routerLink]="['signout']">Logout</a></li>-->
+    <li *ngIf="!authService.isLoggedIn()" ><a [routerLink]="['auth/signin']">Signin</a></li>
+    <li *ngIf="authService.isLoggedIn()"><a (click)="onLogout()">Logout</a></li>
 </ul>

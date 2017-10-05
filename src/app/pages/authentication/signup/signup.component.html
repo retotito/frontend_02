@@ -31,6 +31,13 @@
                     id="password"
                     class="form-control"
                     formControlName="password">
+            <div 
+                *ngIf="password.touched && password.invalid"     
+                class="alert alert-danger"         
+            >      
+                <div *ngIf="password.errors.required">password required</div>        
+                <div *ngIf="password.errors.minLength">minlength {{password.errors.minLength.requiredLength}}</div>    
+            </div>   
         </div>
         <button
                 class="btn btn-primary"

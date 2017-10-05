@@ -1,4 +1,6 @@
+import { AuthService } from './../auth/auth.service';
 import { Component, OnInit } from '@angular/core';
+import { Router } from '@angular/router';
 
 @Component({
   selector: 'app-authwidget',
@@ -7,7 +9,12 @@ import { Component, OnInit } from '@angular/core';
 })
 export class AuthwidgetComponent implements OnInit {
 
-  constructor() { }
+  constructor(private authService: AuthService, private router: Router) { }
+
+  onLogout() {
+    this.authService.logout();
+    this.router.navigateByUrl('//auth/signin');
+  }
 
   ngOnInit() {
   }

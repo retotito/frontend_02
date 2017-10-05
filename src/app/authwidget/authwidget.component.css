@@ -10,3 +10,8 @@
     color: #ffffff;
     padding: 0px;
 }
+
+.authwidget li a:hover {
+    text-decoration: underline;
+    cursor: pointer;
+}

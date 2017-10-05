@@ -38,7 +38,14 @@ export class SignupComponent implements OnInit {
                 Validators.required,
                 Validators.pattern("[a-z0-9!#$%&'*+/=?^_`{|}~-]+(?:\.[a-z0-9!#$%&'*+/=?^_`{|}~-]+)*@(?:[a-z0-9](?:[a-z0-9-]*[a-z0-9])?\.)+[a-z0-9](?:[a-z0-9-]*[a-z0-9])?")
             ]),
-            password: new FormControl(null, Validators.required)
+            password: new FormControl(null, [             
+                Validators.required,                                            // assigne multiple Validators by []
+                Validators.minLength(5)  
+            ])
         });
+    }
+
+    get password () {
+        return this.myForm.get('password');
     }
 }
