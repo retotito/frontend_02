@@ -11,14 +11,27 @@ export class TodosComponent implements OnInit {
   constructor(private todoService: TodosService) { }
 
   addTodo() {
-    console.log("yotodo");
     const todo = {
-      title: "meintitel"
+      "title":"myTitle25",
+      "description":"this is my description",
+      "rating":5
     }
-    this.todoService.createTodo(todo);
+    this.todoService.createTodo(todo)
+      .subscribe(
+        data => console.log(data),
+        error => console.log(error)
+      );
+
+      //reset my todo form
   }
 
   ngOnInit() {
+    this.todoService.getTodos()
+    .subscribe(
+      data => console.log(data),
+      error => console.log(error)
+    );
   }
+  
 
 }
