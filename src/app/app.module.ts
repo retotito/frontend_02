@@ -1,3 +1,5 @@
+import { ErrorHandler } from '@angular/core';
+import { AppErrorHandler } from './common/app-error-handler';
 import { MobileMenuService } from './services/mobile-menu.service';
 import { TodosService } from './services/todos.service';
 import { AuthService } from './auth/auth.service';
@@ -71,7 +73,8 @@ import { MasonryModule } from 'angular2-masonry';
   providers: [
     AuthService,
     TodosService,
-    MobileMenuService
+    MobileMenuService,
+    { provide: ErrorHandler, useClass: AppErrorHandler}
     ],
   bootstrap: [AppComponent]
 })

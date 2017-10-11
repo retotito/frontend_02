@@ -1,4 +1,53 @@
-<p>
-  todos works!
-</p>
-<button class="btn btn-primary" (click)="addTodo()">add Todo</button>
+
+<div class="col-md-8 col-md-offset-2">
+  <form [formGroup]="myForm" (ngSubmit)="createPost()">
+      <div class="form-group">
+          <label for="title">title</label>
+          <input
+                  type="text"
+                  id="title"
+                  class="form-control"
+                  formControlName="title"
+            >
+      </div>
+      <div class="form-group">
+          <label for="description">description</label>
+          <input
+                  type="text"
+                  id="description"
+                  class="form-control"
+                  formControlName="description"
+          >
+      </div>
+      <div class="form-group">
+          <label for="rating">Rating</label>
+          <input
+                  type="number"
+                  min="1" 
+                  max="5"
+                  id="rating"
+                  class="form-control"
+                  formControlName="rating"
+          >
+      </div>
+      <button
+              class="btn btn-primary"
+              type="submit"
+              >add Todo</button>
+  </form>
+</div>
+
+<br>
+<br>
+
+
+<ul class="list-group">
+  <li 
+    *ngFor="let post of posts"
+    class="list-group-item">
+    <button 
+      (click)="deletePost(post)"
+      class="btn btn-primary btn-sm">Delete</button>
+    {{post.title}}
+  </li>
+</ul>
