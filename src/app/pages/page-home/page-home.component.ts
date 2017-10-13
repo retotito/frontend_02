@@ -7,6 +7,11 @@ import { Component, OnInit } from '@angular/core';
 })
 export class PageHomeComponent implements OnInit {
 
+  user = {
+    name: 'Reto',
+    age: 41
+  };
+
   constructor() { }
 
   ngOnInit() {

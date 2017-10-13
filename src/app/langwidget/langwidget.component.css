@@ -1,0 +1,19 @@
+.langwidget {
+    list-style: none;
+    padding-left: 0px;
+}
+
+.langwidget li {
+    display: inline-block;
+    color: #ffffff;
+}
+
+.langwidget li a {
+    padding: 0px;
+    cursor: pointer;
+}
+
+.langwidget .activeLang a {
+    font-weight: bold;
+    cursor: default;
+}

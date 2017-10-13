@@ -1,9 +1,6 @@
 .authwidget {
     list-style: none;
     padding-left: 0px;
-    position: absolute;
-    top: 20px;
-    right: 20px;
 }
 
 .authwidget li a {

@@ -31,6 +31,14 @@ import { TodosComponent } from './pages/todos/todos.component';
 import { AnimationsComponent } from './pages/animations/animations.component';
 import { MobilemenuComponent } from './header/header-mobile/mobilemenu/mobilemenu.component';
 import { MasonryModule } from 'angular2-masonry';
+import { LangwidgetComponent } from './langwidget/langwidget.component';
+import { HttpClientModule, HttpClient } from '@angular/common/http';
+import { TranslateModule, TranslateLoader } from '@ngx-translate/core';
+import { TranslateHttpLoader } from '@ngx-translate/http-loader';
+
+export function HttpLoaderFactory(http: HttpClient) {
+  return new TranslateHttpLoader(http);
+}
 
 @NgModule({
   declarations: [
@@ -52,6 +60,7 @@ import { MasonryModule } from 'angular2-masonry';
     TodosComponent,
     AnimationsComponent,
     MobilemenuComponent,
+    LangwidgetComponent,
   ],
   imports: [
     HttpModule,
@@ -68,7 +77,15 @@ import { MasonryModule } from 'angular2-masonry';
       {path: 'auth',component: AuthenticationComponent, children: AUTH_ROUTES},
       {path: 'todos',component: TodosComponent},
       {path: 'animations',component: AnimationsComponent}
-    ])
+    ]),
+    HttpClientModule,
+    TranslateModule.forRoot({
+      loader: {
+        provide: TranslateLoader,
+        useFactory: HttpLoaderFactory,
+        deps: [HttpClient]
+      }
+    })
   ],
   providers: [
     AuthService,
