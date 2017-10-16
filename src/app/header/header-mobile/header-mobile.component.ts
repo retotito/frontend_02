@@ -11,7 +11,7 @@ import { Component, OnInit } from '@angular/core';
 })
 export class HeaderMobileComponent implements OnInit {
 
-  constructor(private mmService: MobileMenuService) { }
+  constructor(public mmService: MobileMenuService) { }
   
 
   triggerMobileMenu () {

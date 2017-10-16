@@ -11,7 +11,7 @@ import { TranslateService } from '@ngx-translate/core';
 export class AppComponent {
 
   constructor(
-    private mmService: MobileMenuService,
+    public mmService: MobileMenuService,
     private translate: TranslateService
   ) { 
     translate.setDefaultLang('en');

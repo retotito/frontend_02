@@ -31,7 +31,7 @@ import {
 export class MobilemenuComponent  {
   myMenuState = 'closed';
 
-  constructor(private mmService: MobileMenuService) { }
+  constructor(public mmService: MobileMenuService) { }
 
   myServiceListener = this.mmService.componentMethodCalled$.subscribe(
     (isOpen) => {
