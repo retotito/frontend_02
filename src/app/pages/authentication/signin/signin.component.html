@@ -2,7 +2,7 @@
   <div class="col-md-8 col-md-offset-2">
     <form [formGroup]="myForm" (ngSubmit)="onSubmit()">
         <div class="form-group">
-            <label for="email">Mail</label>
+            <label for="email">{{'Auth.Email' | translate}}</label>
             <input
                     type="email"
                     id="email"
@@ -10,7 +10,7 @@
                     formControlName="email">
         </div>
         <div class="form-group">
-            <label for="password">Password</label>
+            <label for="password">{{'Auth.Password' | translate}}</label>
             <input
                     type="password"
                     id="password"
@@ -20,8 +20,8 @@
         <button
                 class="btn btn-primary"
                 type="submit"
-                [disabled]="!myForm.valid">Submit</button>
+                [disabled]="!myForm.valid">{{'Auth.Login' | translate}}</button>
     </form>
-    <a [routerLink]="['../signup']">No account yet? Signup here.</a>
+    <a [routerLink]="['../signup']">{{'Auth.NoAccountYet' | translate}}</a>
   </div>
 </div>

@@ -14,7 +14,10 @@ export class AppComponent {
     public mmService: MobileMenuService,
     private translate: TranslateService
   ) { 
+    translate.addLangs(["en","de"]);
     translate.setDefaultLang('en');
+    let browserlang = translate.getBrowserLang();
+    translate.use(browserlang.match(/en|de/) ? browserlang : "en");
   }
 
 }

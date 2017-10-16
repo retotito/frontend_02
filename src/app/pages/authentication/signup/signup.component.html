@@ -1,7 +1,7 @@
 <div class="col-md-8 col-md-offset-2">
     <form [formGroup]="myForm" (ngSubmit)="onSubmit()">
         <div class="form-group">
-            <label for="firstName">First Name</label>
+            <label for="firstName">{{'Auth.FirstName' | translate}}</label>
             <input
                     type="text"
                     id="firstName"
@@ -9,7 +9,7 @@
                     formControlName="firstName">
         </div>
         <div class="form-group">
-            <label for="lastName">Last Name</label>
+            <label for="lastName">{{'Auth.LastName' | translate}}</label>
             <input
                     type="text"
                     id="lastName"
@@ -17,7 +17,7 @@
                     formControlName="lastName">
         </div>
         <div class="form-group">
-            <label for="email">Mail</label>
+            <label for="email">{{'Auth.Email' | translate}}</label>
             <input
                     type="email"
                     id="email"
@@ -25,7 +25,7 @@
                     formControlName="email">
         </div>
         <div class="form-group">
-            <label for="password">Password</label>
+            <label for="password">{{'Auth.Password' | translate}}</label>
             <input
                     type="password"
                     id="password"
@@ -42,6 +42,6 @@
         <button
                 class="btn btn-primary"
                 type="submit"
-                [disabled]="!myForm.valid">Submit</button>
+                [disabled]="!myForm.valid">{{'Auth.SignUp' | translate}}</button>
     </form>
 </div>

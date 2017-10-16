@@ -35,6 +35,7 @@ import { LangwidgetComponent } from './langwidget/langwidget.component';
 import { HttpClientModule, HttpClient } from '@angular/common/http';
 import { TranslateModule, TranslateLoader } from '@ngx-translate/core';
 import { TranslateHttpLoader } from '@ngx-translate/http-loader';
+import { SasstestComponent } from './sasstest/sasstest.component';
 
 export function HttpLoaderFactory(http: HttpClient) {
   return new TranslateHttpLoader(http, './assets/i18n/', '.json');
@@ -61,6 +62,7 @@ export function HttpLoaderFactory(http: HttpClient) {
     AnimationsComponent,
     MobilemenuComponent,
     LangwidgetComponent,
+    SasstestComponent,
   ],
   imports: [
     HttpModule,
@@ -76,7 +78,8 @@ export function HttpLoaderFactory(http: HttpClient) {
       {path: 'account',component: PageAccountComponent},
       {path: 'auth',component: AuthenticationComponent, children: AUTH_ROUTES},
       {path: 'todos',component: TodosComponent},
-      {path: 'animations',component: AnimationsComponent}
+      {path: 'animations',component: AnimationsComponent},
+      {path: 'sass',component: SasstestComponent}
     ]),
     HttpClientModule,
     TranslateModule.forRoot({

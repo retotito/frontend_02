@@ -58,3 +58,13 @@
 .active_menu a {
     border-bottom: rgba(255,255,255,1) solid 2px;
 }
+
+app-authwidget {
+    text-align: center;
+}
+
+app-langwidget {
+    display: block;
+    width: 100%;
+    text-align: center;
+}

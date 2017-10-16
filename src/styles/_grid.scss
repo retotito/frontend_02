@@ -1,0 +1,82 @@
+@import '_variables.scss';
+
+/* grid small*/
+
+
+.col_wrapper {
+    position: relative;
+    box-sizing: border-box; 
+    clear: both;
+    width: calc(100% + (2 * #{$grid-margin-sides}));
+    margin-left: - $grid-margin-sides;
+    margin-right: - $grid-margin-sides;
+    background-color: pink;
+}
+
+$testi: 20px;
+
+.col_1_4 {
+    width: calc(25% - (2 * #{$grid-margin-sides}));
+    margin-top: 0px;
+    margin-left: $grid-margin-sides;
+    margin-right: $grid-margin-sides;
+    margin-bottom: 2 * $grid-margin-bottom;
+    float: left;
+}
+
+.col_3_4 {
+    box-sizing: border-box;
+    width: calc(75% - 20px);
+    margin: 0px 10px 20px 10px;
+    float: left;
+}
+
+.col_1_3 {
+    box-sizing: border-box;
+    width: calc(33.3333% - 20px);
+    margin: 0px 10px 20px 10px;
+    float: left;
+}
+
+.col_2_3 {
+    box-sizing: border-box;
+    width: calc(66.666% - 20px);
+    margin: 0px 10px 20px 10px;
+    float: left;
+}
+
+.col_1_2 {
+    box-sizing: border-box;
+    width: calc(50% - 20px);
+    margin: 0px 10px 20px 10px;
+    float: left;
+}
+
+.col_1_1 {
+    box-sizing: border-box;
+    width: calc(100% - 20px);
+    margin: 0px 10px 20px 10px;
+    float: left;
+}
+
+@media screen and (max-width: 979px) {
+    .ps_1_4th_column_sm {
+        width: calc(50% - 20px);
+    }
+    .ps_3_4th_column_sm, 
+    .ps_1_2th_column_sm,
+    .ps_2_3th_column_sm,
+    .ps_1_3th_column_sm {
+        width: calc(100% - 20px);
+    }
+}
+
+@media screen and (max-width: 767px) {
+    .ps_1_4th_column_sm,
+    .ps_3_4th_column_sm,
+    .ps_1_3th_column_sm,
+    .ps_2_3th_column_sm,
+    .ps_1_2th_column_sm {
+        width: calc(100% - 20px);
+    }
+}

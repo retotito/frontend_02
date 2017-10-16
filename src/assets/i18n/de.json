@@ -1,4 +1,25 @@
 {
     "Title": "Übersetzungs Muster",
-    "Intro": "Hallo mein Name ist {{name}}, Ich {{age}} Jahre alt."
+    "Intro": "Hallo mein Name ist {{name}}, Ich {{age}} Jahre alt.",
+    "Wellcomme":"Willkommen auf meiner Demoseite ",
+    "page-home":{
+        "welcome":"Willkommen auf meiner Demoseite ",
+        "intro":"Diese ist eine Angular 4 Webseite.",
+        "intro2":"Das Backend enthält Folgende Komponenten:"
+    },
+    "Mainmenu": {
+        "About":"Über",
+        "Projects":"Projekte",
+        "Gallery":"Galerie",
+        "Account":"Konto"
+    },
+    "Auth": {
+        "Email":"Email",
+        "Password":"Passwort",
+        "Login":"Login",
+        "NoAccountYet":"Noch kein Konto? Hier registrieren.",
+        "FirstName":"Vorname",
+        "LastName":"Nachname",
+        "SignUp":"Registrieren"
+    }
 }

@@ -1,4 +1,19 @@
 {
     "Title": "Translation example",
-    "Intro": "Hello I am {{name}}, I am {{age}} years old."
+    "Intro": "Hello I am {{name}}, I am {{age}} years old.",
+    "Mainmenu": {
+        "About":"About",
+        "Projects":"Projects",
+        "Gallery":"Gallery",
+        "Account":"Account"
+    },
+    "Auth": {
+        "Email":"Email",
+        "Password":"Password",
+        "Login":"Login",
+        "NoAccountYet":"No account yet? Signup here.",
+        "FirstName":"First Name",
+        "LastName":"Last Name",
+        "SignUp":"Signup"
+    }
 }

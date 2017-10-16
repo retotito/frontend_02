@@ -14,6 +14,8 @@ export class LangwidgetComponent implements OnInit {
     this.translate.use(language);
   }
 
+
+
   ngOnInit() {
   }
 

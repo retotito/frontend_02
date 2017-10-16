@@ -1,6 +1,7 @@
 .langwidget {
     list-style: none;
     padding-left: 0px;
+    display: inline-block;
 }
 
 .langwidget li {

@@ -1,12 +1,1 @@
 /* You can add global styles to this file, and also import other style files */
-@import "~bootstrap/dist/css/bootstrap.css";
-
-body {
-	background: #ffffff  !important;
-	background: -moz-linear-gradient(top,  rgba(255,255,255,1) 0%, rgba(173, 216, 230, 0.2) 100%)  !important; /* FF3.6-15 */
-	background: -webkit-linear-gradient(top,  rgba(255,255,255,1) 0%,rgba(173, 216, 230,0.2) 100%)  !important; /* Chrome10-25,Safari5.1-6 */
-	background: linear-gradient(to bottom,  rgba(255,255,255,1) 0%,rgba(173, 216, 230,0.2) 100%)  !important; /* W3C, IE10+, FF16+, Chrome26+, Opera12+, Safari7+ */
-	background-attachment: fixed !important;
-	overflow-x: hidden;
-	overflow-y: scroll;
-}

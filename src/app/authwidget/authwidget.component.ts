@@ -1,6 +1,7 @@
 import { AuthService } from './../auth/auth.service';
 import { Component, OnInit } from '@angular/core';
 import { Router } from '@angular/router';
+import { MobileMenuService } from './../services/mobile-menu.service';
 
 @Component({
   selector: 'app-authwidget',
@@ -9,11 +10,21 @@ import { Router } from '@angular/router';
 })
 export class AuthwidgetComponent implements OnInit {
 
-  constructor(public authService: AuthService, private router: Router) { }
+  constructor(
+    public authService: AuthService, 
+    private router: Router,
+    public mmService: MobileMenuService
+  ) { }
 
   onLogout() {
     this.authService.logout();
+    this.closeMobileMenu();
     this.router.navigateByUrl('//auth/signin');
+  }
+
+  closeMobileMenu() {
+    this.mmService.isOpen = false;
+    this.mmService.callComponentMethod();
   }
 
   ngOnInit() {

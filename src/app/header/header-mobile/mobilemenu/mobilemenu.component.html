@@ -1,10 +1,12 @@
 <div id="mmWrapper" [@menuState]="myMenuState">
   <nav id="main-nav-mobile">
     <ul>
-      <li routerLinkActive="active_menu"><a (click)="closeMenu()" routerLink="/about">About</a></li>
-      <li routerLinkActive="active_menu"><a (click)="closeMenu()" routerLink="/projects">Projects</a></li>
-      <li routerLinkActive="active_menu"><a (click)="closeMenu()" routerLink="/gallery">Gallery</a></li>
-      <li routerLinkActive="active_menu"><a (click)="closeMenu()" routerLink="/account">Account</a></li>
+      <li routerLinkActive="active_menu"><a (click)="closeMenu()" routerLink="/about">{{ 'Mainmenu.About' | translate}}</a></li>
+      <li routerLinkActive="active_menu"><a (click)="closeMenu()" routerLink="/projects">{{ 'Mainmenu.Projects' | translate}}</a></li>
+      <li routerLinkActive="active_menu"><a (click)="closeMenu()" routerLink="/gallery">{{ 'Mainmenu.Gallery' | translate}}</a></li>
+      <li routerLinkActive="active_menu"><a (click)="closeMenu()" routerLink="/account">{{ 'Mainmenu.Account' | translate}}</a></li>
     </ul>
   </nav> 
+  <app-authwidget></app-authwidget>  
+  <app-langwidget></app-langwidget>
 </div>
