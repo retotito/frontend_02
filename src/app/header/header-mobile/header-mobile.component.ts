@@ -11,6 +11,8 @@ import { Component, OnInit } from '@angular/core';
 })
 export class HeaderMobileComponent implements OnInit {
 
+  windowWitdth = 0;
+
   constructor(public mmService: MobileMenuService) { }
   
 
@@ -20,11 +22,18 @@ export class HeaderMobileComponent implements OnInit {
   }
 
   onResize(event){
-    this.mmService.isOpen = false;
-    this.mmService.callComponentMethod();
+    console.log("var :"+this.windowWitdth);
+    let eventWidth = event.target.innerWidth;
+    console.log(eventWidth);
+    if (this.windowWitdth != eventWidth ) {
+      this.mmService.isOpen = false;
+      this.mmService.callComponentMethod();
+    }
+    this.windowWitdth = window.innerWidth;
   }
 
   ngOnInit() {
+    this.windowWitdth = window.innerWidth;
   }
 
 }

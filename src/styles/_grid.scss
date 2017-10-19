@@ -1,8 +1,8 @@
 @import '_variables.scss';
 
-/* grid small*/
+/* grid elements large ----------------------------------------- */
 
-
+// variables for col_wrapper large: $grid-margin-sides
 .col_wrapper {
     position: relative;
     box-sizing: border-box; 
@@ -10,13 +10,17 @@
     width: calc(100% + (2 * #{$grid-margin-sides}));
     margin-left: - $grid-margin-sides;
     margin-right: - $grid-margin-sides;
-    background-color: pink;
 }
 
-$testi: 20px;
-
-.col_1_4 {
-    width: calc(25% - (2 * #{$grid-margin-sides}));
+// variables for columns large: $grid-margin-sides, $grid-margin-bottom
+.col_1_4,
+.col_3_4,
+.col_1_3,
+.col_2_3,
+.col_1_2,
+.col_1_1
+ {
+    box-sizing: border-box;
     margin-top: 0px;
     margin-left: $grid-margin-sides;
     margin-right: $grid-margin-sides;
@@ -24,59 +28,118 @@ $testi: 20px;
     float: left;
 }
 
+.col_1_4 {
+    width: calc(25% - (2 * #{$grid-margin-sides}));
+    background-color: lightblue;
+}
 .col_3_4 {
-    box-sizing: border-box;
-    width: calc(75% - 20px);
-    margin: 0px 10px 20px 10px;
-    float: left;
+    width: calc(75% - (2 * #{$grid-margin-sides}));
+    background-color: lightblue;
 }
-
 .col_1_3 {
-    box-sizing: border-box;
-    width: calc(33.3333% - 20px);
-    margin: 0px 10px 20px 10px;
-    float: left;
+    width: calc(33.3333% - (2 * #{$grid-margin-sides}));
+    background-color: lightgreen;
 }
-
 .col_2_3 {
-    box-sizing: border-box;
-    width: calc(66.666% - 20px);
-    margin: 0px 10px 20px 10px;
-    float: left;
+    width: calc(66.666% - (2 * #{$grid-margin-sides}));
+    background-color: lightgreen;
 }
-
 .col_1_2 {
-    box-sizing: border-box;
-    width: calc(50% - 20px);
-    margin: 0px 10px 20px 10px;
-    float: left;
+    width: calc(50% - (2 * #{$grid-margin-sides}));
+    background-color: lightseagreen;
 }
-
 .col_1_1 {
-    box-sizing: border-box;
-    width: calc(100% - 20px);
-    margin: 0px 10px 20px 10px;
-    float: left;
+    width: calc(100% - (2 * #{$grid-margin-sides}));
+    background-color: pink;
 }
 
-@media screen and (max-width: 979px) {
-    .ps_1_4th_column_sm {
-        width: calc(50% - 20px);
+@media screen and (max-width: 1079px) {
+    .col_1_4 {
+        width: calc(50% - (2 * #{$grid-margin-sides}));
     }
-    .ps_3_4th_column_sm, 
-    .ps_1_2th_column_sm,
-    .ps_2_3th_column_sm,
-    .ps_1_3th_column_sm {
-        width: calc(100% - 20px);
+    .col_3_4, 
+    .col_1_3,
+    .col_2_3,
+    .col_1_2 {
+        width: calc(100% - (2 * #{$grid-margin-sides}));
     }
 }
 
 @media screen and (max-width: 767px) {
-    .ps_1_4th_column_sm,
-    .ps_3_4th_column_sm,
-    .ps_1_3th_column_sm,
-    .ps_2_3th_column_sm,
-    .ps_1_2th_column_sm {
-        width: calc(100% - 20px);
+    .col_1_4 {
+        width: calc(100% - (2 * #{$grid-margin-sides}));
+    }
+}
+
+
+/* grid elements small --------------------------------------*/
+
+
+// variables for col_wrapper large: $grid-sm-margin-sides
+.col_sm_wrapper {
+    position: relative;
+    box-sizing: border-box; 
+    clear: both;
+    width: calc(100% + (2 * #{$grid-sm-margin-sides}));
+    margin-left: - $grid-sm-margin-sides;
+    margin-right: - $grid-sm-margin-sides;
+}
+
+// variables for columns large: $grid-sm-margin-sides, $grid-sm-margin-bottom
+.col_sm_1_4,
+.col_sm_3_4,
+.col_sm_1_3,
+.col_sm_2_3,
+.col_sm_1_2,
+.col_sm_1_1
+ {
+    box-sizing: border-box;
+    margin-top: 0px;
+    margin-left: $grid-sm-margin-sides;
+    margin-right: $grid-sm-margin-sides;
+    margin-bottom: 2 * $grid-sm-margin-bottom;
+    float: left;
+}
+
+.col_sm_1_4 {
+    width: calc(25% - (2 * #{$grid-sm-margin-sides}));
+    background-color: lightsalmon;
+}
+.col_sm_3_4 {
+    width: calc(75% - (2 * #{$grid-sm-margin-sides}));
+    background-color: lightsalmon;
+}
+.col_sm_1_3 {
+    width: calc(33.3333% - (2 * #{$grid-sm-margin-sides}));
+    background-color: lightsalmon;
+}
+.col_sm_2_3 {
+    width: calc(66.666% - (2 * #{$grid-sm-margin-sides}));
+    background-color: lightsalmon;
+}
+.col_sm_1_2 {
+    width: calc(50% - (2 * #{$grid-sm-margin-sides}));
+    background-color: lightsalmon;
+}
+.col_sm_1_1 {
+    width: calc(100% - (2 * #{$grid-sm-margin-sides}));
+    background-color: lightsalmon;
+}
+
+@media screen and (max-width: 767px) {
+    .col_sm_1_4 {
+        width: calc(50% - (2 * #{$grid-sm-margin-sides}));
+    }
+    .col_sm_3_4, 
+    .col_sm_1_3,
+    .col_sm_2_3,
+    .col_sm_1_2 {
+        width: calc(100% - (2 * #{$grid-sm-margin-sides}));
+    }
+}
+
+@media screen and (max-width: 480px) {
+    .col_sm_1_4 {
+        width: calc(100% - (2 * #{$grid-sm-margin-sides}));
     }
 }

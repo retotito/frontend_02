@@ -8,7 +8,7 @@ import { TranslateService } from '@ngx-translate/core';
 })
 export class LangwidgetComponent implements OnInit {
 
-  constructor(private translate: TranslateService) { }
+  constructor(public translate: TranslateService) { }
 
   switchLanguage(language: string) {
     this.translate.use(language);
