@@ -22,9 +22,7 @@ export class HeaderMobileComponent implements OnInit {
   }
 
   onResize(event){
-    console.log("var :"+this.windowWitdth);
     let eventWidth = event.target.innerWidth;
-    console.log(eventWidth);
     if (this.windowWitdth != eventWidth ) {
       this.mmService.isOpen = false;
       this.mmService.callComponentMethod();

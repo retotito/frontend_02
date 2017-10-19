@@ -48,6 +48,11 @@ export class MobilemenuComponent  {
     this.myMenuState = 'closed';
     this.mmService.isOpen = false;
   }
+
+  triggerMobileMenu () {
+    this.mmService.isOpen = !this.mmService.isOpen;
+    this.mmService.callComponentMethod();
+  }
   
 
 }

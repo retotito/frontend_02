@@ -10,3 +10,8 @@
   <app-authwidget></app-authwidget>  
   <app-langwidget></app-langwidget>
 </div>
+<div id="closeMenuTrigger"
+(click)="triggerMobileMenu()"
+> 
+  <i *ngIf="this.mmService.isOpen" id="closeMobileMenu" class="fa fa-times " aria-hidden="true" aria-hidden="true"></i>
+</div>

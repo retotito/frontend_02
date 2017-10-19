@@ -1,3 +1,4 @@
+import { FloatingTriggerComponent } from './floating-trigger/floating-trigger.component';
 import { ErrorHandler } from '@angular/core';
 import { AppErrorHandler } from './common/app-error-handler';
 import { MobileMenuService } from './services/mobile-menu.service';
@@ -63,6 +64,7 @@ export function HttpLoaderFactory(http: HttpClient) {
     MobilemenuComponent,
     LangwidgetComponent,
     SasstestComponent,
+    FloatingTriggerComponent
   ],
   imports: [
     HttpModule,

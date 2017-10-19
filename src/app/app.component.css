@@ -7,3 +7,14 @@
     padding: 20px;
     background-color: #ffffff;
 }
+
+#isMobile {
+    width: 0px;
+    height: 1px;
+}
+
+@media screen and (max-width: 899px) {
+    #isMobile {
+        width: 1px;
+    }
+}

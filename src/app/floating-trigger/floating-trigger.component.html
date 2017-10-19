@@ -1,0 +1,6 @@
+<div id="floatingMobileMenuTrigger"
+  [class.isScrolledDown]="isScrolledDown"
+  (click)="triggerMobileMenu()"
+> 
+  <i *ngIf="!this.mmService.isOpen" id="openMobileMenu" class="fa fa-bars" aria-hidden="true"></i>
+</div>

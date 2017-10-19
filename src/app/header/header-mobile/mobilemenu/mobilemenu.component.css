@@ -1,5 +1,5 @@
 :host {
-    position: absolute;
+    position: fixed;
     top: 0px;
     right: -100%;
     display: block;
@@ -11,12 +11,16 @@
 #mmWrapper {
     position: absolute;
     left: 0px;
+    /*
     top: 80px;
     min-height: calc(100vh - 81px);
+    */
+    height: 100vh;
     width: 100%;
     box-sizing: border-box;
     padding: 0px 20px 20px 20px;
     background-color: lightblue;
+    overflow-y: auto;
 }
 
 #main-nav-mobile {
@@ -27,7 +31,7 @@
 #main-nav-mobile>ul {
     padding: 0px;
     display: inline-block;
-    text-align: left;
+    text-align: center;
 }
 
 #main-nav-mobile>ul>li {
@@ -67,4 +71,16 @@ app-langwidget {
     display: block;
     width: 100%;
     text-align: center;
+}
+
+#closeMenuTrigger {
+    cursor: pointer;
+}
+
+#closeMobileMenu {
+    position: fixed;
+    top: 20px;
+    right: 20px;
+    font-size: 42px;
+    color: #ffffff;
 }

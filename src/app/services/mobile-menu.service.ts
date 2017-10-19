@@ -17,6 +17,11 @@ export class MobileMenuService {
 
   // Service message commands
   callComponentMethod() {
+    if (this.isOpen) {
+      document.body.style.overflowY = "hidden";
+    } else {
+      document.body.style.overflowY = "scroll";
+    }
     this.componentMethodCallSource.next(this.isOpen);
   }
 
