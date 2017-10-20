@@ -1,6 +1,21 @@
-<div id="rk_gridWrapper" >
-  <div *ngFor="let item of items" class="rk_gridItem">
-    <img (load)="gridIsLoadet()" src="{{item.src}}">
+<div  id="rk_gridWrapper" 
+      (load)="imageLoaded()"
+      [ngStyle]="{
+        'display': contentLoaded ? 'block' : 'none'
+      }"
+>
+  <div  *ngFor="let item of items" 
+        class="rk_gridItem"
+  >
+    <img (load)="imageLoaded()" src="{{item.src}}">
   </div>
 </div>
+<img [ngStyle]="{
+    'display': contentLoaded ? 'none' : 'block'
+    }"
+    src="assets/images/spinner.gif"
+    id="spinner"
+/>
+
+
 

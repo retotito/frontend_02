@@ -18,3 +18,10 @@ body {
 	clear: both;
 	height: 0px;
 }
+
+#spinner {
+	width: 80px;
+	position: fixed;
+	left: calc(50vw - 40px);
+	top: calc(50vh - 40px);
+}

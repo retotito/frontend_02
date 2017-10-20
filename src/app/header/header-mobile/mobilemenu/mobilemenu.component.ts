@@ -24,7 +24,7 @@ import {
         left: '0px',
         display: 'none'
       })),
-      transition('closed <=> open', animate('200ms ease-in')),
+      transition('closed <=> open', animate('80ms ease-in')),
     ])
   ]
 })

@@ -1,4 +1,5 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit} from '@angular/core';
+import {BrowserModule} from '@angular/platform-browser'
 
 @Component({
   selector: 'app-page-gallery',
@@ -9,7 +10,9 @@ import { Component, OnInit } from '@angular/core';
   }
 })
 export class PageGalleryComponent implements OnInit {
-  gridCounter = 0; 
+  contentLoaded = false;
+  itemsCounter = 0;
+
   items = [
     { title: 'Brick 2',
       src: 'assets/images/gallery/pexels (1).jpg'},
@@ -33,44 +36,33 @@ export class PageGalleryComponent implements OnInit {
       src: 'assets/images/gallery/pexels (10).jpg'},
  ]
 
- gridSettings = {
-   maxWidth: '200px',
-   gapHorizontal: '20px',
-   gapVertical: '20px'
- }
-
- onResize(event) {
-  console.log("resize");
- }
-
- gridIsLoadet() {
-  //console.log(this.items.length);
-  //console.log(++this.gridCounter);
-  ++this.gridCounter
-  if (this.gridCounter === this.items.length) {
-    this.gridInit();
-  }
- }
-
-  gridInit() {
-    this.setXDimensions();
-  }
-
-  setXDimensions() {
-    console.log("allLoadet");
-    let gridWrapper = document.getElementById("rk_gridWrapper");
-    let wrapperWidth = gridWrapper.clientWidth;
-    console.log(wrapperWidth);
-
-  }
-
-  ngAfterViewInit() {
-    
+  onResize(event) {
+    //console.log("resize");
   }
 
   constructor() { }
 
   ngOnInit() {
+
   }
 
+  imageLoaded() {
+    this.itemsCounter ++;
+    if (this.itemsCounter == this.items.length) {
+      this.allImagesLoaded();
+    }
+  }
+
+  allImagesLoaded() {
+    this.contentLoaded = true;
+  }
+
+
+  ngAfterViewInit() {
+    // window.onload = function() {
+    //   this.contentLoaded = true;
+    // }
+  }
+ 
+  
 }

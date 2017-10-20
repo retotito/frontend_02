@@ -3,7 +3,7 @@ import { BadInput } from './../../common/bad-input';
 import { NotFoundError } from './../../common/not-found-error';
 import { AppError } from './../../common/app-error';
 import { TodosService } from './../../services/todos.service';
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit,OnChanges, SimpleChanges } from '@angular/core';
 import { FormGroup, FormControl, Validators } from "@angular/forms";
 
 @Component({
@@ -11,7 +11,7 @@ import { FormGroup, FormControl, Validators } from "@angular/forms";
   templateUrl: './todos.component.html',
   styleUrls: ['./todos.component.css']
 })
-export class TodosComponent implements OnInit {
+export class TodosComponent implements OnInit , OnChanges{
   myForm: FormGroup;
   posts:any [];
 
@@ -86,6 +86,10 @@ z
       description: new FormControl(null, Validators.required),
       rating: new FormControl(null, Validators.required)
     });
+  }
+
+  ngOnChanges(changes: SimpleChanges) {
+    console.log(changes);
   }
   
 

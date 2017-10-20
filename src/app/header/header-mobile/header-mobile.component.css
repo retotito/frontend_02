@@ -2,13 +2,14 @@
     background-color: lightblue;
     height: 80px;
     position: relative;
+    box-shadow: 1px 1px 4px 1px rgba(0,0,0,0.1);
 }
 
 #logoMobile {
     position: absolute;
     left: 20px;
-    top: 20px;
-    height: 40px;
+    top: 25px;
+    height: 30px;
 }
 
 #mobileMenuTrigger {
