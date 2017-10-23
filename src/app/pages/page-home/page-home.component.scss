@@ -1,0 +1,94 @@
+@import '../../../styles/_variables.scss';
+
+#intro-wrapper {
+    position: relative;
+    margin-bottom: 140px;
+}
+
+#intro-content {
+    width: calc(100% - 300px);
+    min-height: 270px;
+}
+
+#intro-image {
+    position: absolute;
+    right: 0px;
+    top: 0px;
+    -webkit-border-radius: 50%;
+    -moz-border-radius: 50%;
+    border-radius: 50%;
+    overflow: hidden;
+    width: 260px;
+    height: 260px;
+}
+
+#intro-image img {
+    position: relative;
+    left: -10px;
+    top: -30px;
+    width: 125%;
+}    
+
+#techLogos {
+     margin-top: 10px;
+     margin-bottom: 60px;
+}
+
+.techLogo img {
+    width: 100%;
+}
+
+#progress {
+    margin-top: 24px;
+}
+
+.todo  {
+    font-size: 20px;
+    position: relative;
+}
+
+.todo .fa {
+    color: $color-main;
+    font-size: 28px;
+    position: relative;
+    top: 4px;
+}
+
+.todo.done .fa-square-o {
+    display: none;
+}
+
+.todo.open .fa-check-square-o {
+    display: none;
+}
+
+@media screen and (max-width: 1079px) {
+    .col_1_4 {
+        width: calc(33.3333% - (2 * #{$grid-margin-sides}));
+    }
+}
+
+@media screen and (max-width: 767px) {
+    #intro-content {
+        width: 100%;
+        margin-bottom: 40px;
+    }
+ 
+    #intro-image {
+        position: static;
+        margin-left: auto;
+        margin-right: auto;
+        width: 220px;
+        height: 220px;
+    }
+
+    .col_1_4 {
+        width: calc(50% - (2 * #{$grid-margin-sides}));
+    }
+}
+
+@media screen and (max-width: 539px) {
+    .col_1_4 {
+        width: calc(100% - (2 * #{$grid-margin-sides}));
+    }
+}

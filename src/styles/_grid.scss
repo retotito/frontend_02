@@ -13,6 +13,7 @@
 }
 
 // variables for columns large: $grid-margin-sides, $grid-margin-bottom
+.col_1_6,
 .col_1_4,
 .col_3_4,
 .col_1_3,
@@ -28,32 +29,32 @@
     float: left;
 }
 
+.col_1_6 {
+    width: calc(16.6666% - (2 * #{$grid-margin-sides}));
+}
 .col_1_4 {
     width: calc(25% - (2 * #{$grid-margin-sides}));
-    background-color: lightblue;
 }
 .col_3_4 {
     width: calc(75% - (2 * #{$grid-margin-sides}));
-    background-color: lightblue;
 }
 .col_1_3 {
     width: calc(33.3333% - (2 * #{$grid-margin-sides}));
-    background-color: lightgreen;
 }
 .col_2_3 {
     width: calc(66.666% - (2 * #{$grid-margin-sides}));
-    background-color: lightgreen;
 }
 .col_1_2 {
     width: calc(50% - (2 * #{$grid-margin-sides}));
-    background-color: lightseagreen;
 }
 .col_1_1 {
     width: calc(100% - (2 * #{$grid-margin-sides}));
-    background-color: pink;
 }
 
 @media screen and (max-width: 1079px) {
+    .col_1_6 {
+        width: calc(20% - (2 * #{$grid-margin-sides}));
+    }
     .col_1_4 {
         width: calc(50% - (2 * #{$grid-margin-sides}));
     }
@@ -65,9 +66,27 @@
     }
 }
 
+@media screen and (max-width: 839px) {
+    .col_1_6 {
+        width: calc(25% - (2 * #{$grid-margin-sides}));
+    }
+}
+
 @media screen and (max-width: 767px) {
     .col_1_4 {
         width: calc(100% - (2 * #{$grid-margin-sides}));
+    }
+}
+
+@media screen and (max-width: 659px) {
+    .col_1_6 {
+        width: calc(33.3333% - (2 * #{$grid-margin-sides}));
+    }
+}
+
+@media screen and (max-width: 479px) {
+    .col_1_6 {
+        width: calc(50% - (2 * #{$grid-margin-sides}));
     }
 }
 
@@ -103,27 +122,21 @@
 
 .col_sm_1_4 {
     width: calc(25% - (2 * #{$grid-sm-margin-sides}));
-    background-color: lightsalmon;
 }
 .col_sm_3_4 {
     width: calc(75% - (2 * #{$grid-sm-margin-sides}));
-    background-color: lightsalmon;
 }
 .col_sm_1_3 {
     width: calc(33.3333% - (2 * #{$grid-sm-margin-sides}));
-    background-color: lightsalmon;
 }
 .col_sm_2_3 {
     width: calc(66.666% - (2 * #{$grid-sm-margin-sides}));
-    background-color: lightsalmon;
 }
 .col_sm_1_2 {
     width: calc(50% - (2 * #{$grid-sm-margin-sides}));
-    background-color: lightsalmon;
 }
 .col_sm_1_1 {
     width: calc(100% - (2 * #{$grid-sm-margin-sides}));
-    background-color: lightsalmon;
 }
 
 @media screen and (max-width: 767px) {

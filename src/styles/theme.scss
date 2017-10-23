@@ -1,7 +1,9 @@
 @import "~bootstrap/dist/css/bootstrap.css";
+@import "_variables.scss";
+@import "_grid.scss";
+@import "_forms.scss";
 
-$bg-content : white;
-$h1color: pink;
+$bg-content : #ffffff;
 
 body {
 	background: $bg-content !important;
@@ -11,7 +13,21 @@ body {
 	background-attachment: fixed !important;
 	overflow-x: hidden;
 	overflow-y: scroll;
-	font-family: 'Roboto', sans-serif;	
+	font-family: 'Quattrocento Sans', sans-serif;	
+}
+
+h1, h2, h3, h4, h5, h6 {
+	font-family: 'Quattrocento', serif;
+	color: $color-headings;
+}
+
+h1 {
+	margin-bottom: 12px;
+}
+
+p {
+	font-family: 'Quattrocento Sans', sans-serif;
+	color: $color-paragraph;
 }
 
 .clear {

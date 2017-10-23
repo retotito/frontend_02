@@ -3,9 +3,24 @@
     "Intro": "Hallo mein Name ist {{name}}, Ich {{age}} Jahre alt.",
     "Wellcomme":"Willkommen auf meiner Demoseite ",
     "page-home":{
-        "welcome":"Willkommen auf meiner Demoseite ",
+        "welcome":"Willkommen auf meiner Angular-Demoseite ",
         "intro":"Diese ist eine Angular 4 Webseite.",
-        "intro2":"Das Backend enthält Folgende Komponenten:"
+        "intro2":"Das Backend enthält Folgende Komponenten:",
+        "h2-technologies":"Für dieses Projekt verwendete Technologien:",
+        "h2-progress:":"Projektfortschritt:",
+        "todos":{
+            "01":"Mobile Menu",
+            "02":"Responsive Grid",
+            "03":"Localization",
+            "04":"Authentifikation",
+            "05":"Reacitive form",
+            "06":"Image upload",
+            "07":"Drag n drop",
+            "08":"Data table",
+            "09":"Categories",
+            "10":"Geolocation reverse",
+            "11":"Elastic Search"
+        }
     },
     "Mainmenu": {
         "About":"Über",
