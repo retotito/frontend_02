@@ -1,0 +1,22 @@
+<form [formGroup]="myForm" (ngSubmit)="queryCategories()">
+  
+  <label for="catquery">title</label>
+  <input
+    type="text"
+    id="catquery"
+    class=""
+    formControlName="catquery"
+  >
+  <button
+    class=""
+    type="submit"
+  >query
+  </button>
+</form>
+<hr>
+<hr>
+<ul>
+  <li *ngFor="let mainCat of mainCategories">
+    {{mainCat['languages'][this.currentLang].name}}
+  </li>
+</ul>

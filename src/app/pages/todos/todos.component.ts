@@ -21,7 +21,7 @@ export class TodosComponent implements OnInit , OnChanges{
     this.todoService.getAll()
     .subscribe(posts => this.posts = posts);
   }
-z
+
   createPost() {
     const newPost = {
       "title":this.myForm.value.title,

@@ -22,6 +22,15 @@ export class DataService {
       .map((res:Response) => res.json())
       .catch(this.handleError);
   }
+
+  queryAll(params: string){
+    let headers = new Headers();
+    headers.append('Content-Type', 'application/json');
+    headers.append('Authorization', this.getToken());
+    return this.http.get(this.url+params, {headers: headers})
+      .map((res:Response) => res.json())
+      .catch(this.handleError);
+  }
  
   create(resource){
     let headers = new Headers();

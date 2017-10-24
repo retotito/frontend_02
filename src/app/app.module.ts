@@ -1,3 +1,5 @@
+import { AddsComponent } from './posts/adds/adds.component';
+import { CategoriesService } from './services/categories.service';
 import { FloatingTriggerComponent } from './floating-trigger/floating-trigger.component';
 import { ErrorHandler } from '@angular/core';
 import { AppErrorHandler } from './common/app-error-handler';
@@ -45,6 +47,7 @@ export function HttpLoaderFactory(http: HttpClient) {
 @NgModule({
   declarations: [
     AppComponent,
+    AddsComponent,
     MainMenuComponent,
     HeaderComponent,
     HeaderDesktopComponent,
@@ -95,6 +98,7 @@ export function HttpLoaderFactory(http: HttpClient) {
   providers: [
     AuthService,
     TodosService,
+    CategoriesService,
     MobileMenuService,
     { provide: ErrorHandler, useClass: AppErrorHandler}
     ],
