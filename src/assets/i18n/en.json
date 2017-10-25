@@ -1,6 +1,4 @@
 {
-    "Title": "Translation example",
-    "Intro": "Hello I am {{name}}, I am {{age}} years old.",
     "page-home":{
         "welcome":"Welcome to my Angular-Demopage",
         "intro":"Diese ist eine Angular 4 Webseite.",
@@ -34,6 +32,10 @@
         "NoAccountYet":"No account yet? Signup here.",
         "FirstName":"First Name",
         "LastName":"Last Name",
-        "SignUp":"Signup"
+        "SignUp":"Signup",
+        "Code":"Authentication code",
+        "minLength":"Minimum {{minLength}} characters.",
+        "validEmail":"Please enter a valid email adress.",
+        "required":"Required field."
     }
 }

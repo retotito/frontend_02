@@ -1,15 +1,12 @@
 {
-    "Title": "Übersetzungs Muster",
-    "Intro": "Hallo mein Name ist {{name}}, Ich {{age}} Jahre alt.",
-    "Wellcomme":"Willkommen auf meiner Demoseite ",
     "page-home":{
         "welcome":"Willkommen auf meiner Angular-Demoseite ",
         "intro":"Diese ist eine Angular 4 Webseite.",
         "intro2":"Das Backend enthält Folgende Komponenten:",
         "h2-technologies":"Für dieses Projekt verwendete Technologien:",
-        "h2-progress:":"Projektfortschritt:",
+        "h2-progress":"Projektfortschritt:",
         "todos":{
-            "01":"Mobile Menu",
+            "01":"Mobiles Menu",
             "02":"Responsive Grid",
             "03":"Localization",
             "04":"Authentifikation",
@@ -35,6 +32,10 @@
         "NoAccountYet":"Noch kein Konto? Hier registrieren.",
         "FirstName":"Vorname",
         "LastName":"Nachname",
-        "SignUp":"Registrieren"
+        "SignUp":"Registrieren",
+        "Code":"Autorisierungscode",
+        "minLength":"Mindestens {{minLength}} Charakter.",
+        "validEmail":"Bitte gültige Emailadresse eingeben.",
+        "required":"Pflichtfeld"
     }
 }

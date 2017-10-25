@@ -1,20 +1,63 @@
+@import "_variables.scss";
+
 .form-field {
     margin-bottom: 16px;
 }
 
+label {
+    color: $color-main;
+}
+
 input {
+    box-sizing: border-box;
     width: 100%;
+    outline: none;
+    -webkit-border-radius: 0px !important;
+    -moz-border-radius: 0px !important;
+    border-radius: 0px !important;
+    border: rgba(0, 0, 0, 0.15) solid 1px;
 }
 
-.button {
-color: #ffffff;
-font-size: 20px;
-background: #ADD8E6;
-padding: 10px 20px 10px 20px;
-text-decoration: none;
+input:-webkit-autofill,
+input:-webkit-autofill:hover, 
+input:-webkit-autofill:focus
+input:-webkit-autofill, 
+textarea:-webkit-autofill,
+textarea:-webkit-autofill:hover
+textarea:-webkit-autofill:focus,
+select:-webkit-autofill,
+select:-webkit-autofill:hover,
+select:-webkit-autofill:focus {
+  -webkit-text-fill-color: inherit !important;
+  box-shadow: 0 0 0px 1000px #FFFFFF inset;
 }
 
-.button {
-background: #3cb0fd;
-text-decoration: none;
+input:focus {
+    border: $color-main solid 1px !important;
+}
+
+input.form-error {
+    background-color: $form-error-bg !important;
+}
+
+.form-error p {
+    color: $form-error-p;
+}
+
+button {
+    background-color: $form-valid-bg;
+    border: none;
+    color: white;
+    font-size: 20px;
+    padding: 4px 20px 4px 20px;
+    cursor: pointer;
+}
+
+button:hover {
+    background-color: $color-hover;
+}
+
+button:disabled{
+    background-color: $form-error-bg;
+    cursor: default !important;
 }

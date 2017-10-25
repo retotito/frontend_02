@@ -1,47 +1,73 @@
-<div class="col-md-8 col-md-offset-2">
+<div id="signup-form">
     <form [formGroup]="myForm" (ngSubmit)="onSubmit()">
-        <div class="form-group">
-            <label for="firstName">{{'Auth.FirstName' | translate}}</label>
-            <input
+        <div class="form-field">
+            <label for="firstName">{{'Auth.FirstName' | translate}} *</label>
+            <input  [class.form-error]="myForm.get('firstName').touched && myForm.get('firstName').invalid"
                     type="text"
                     id="firstName"
                     class="form-control"
-                    formControlName="firstName">
+                    formControlName="firstName"
+            >
+            <div class="form-error">          
+                <p *ngIf="myForm.get('firstName').touched &&myForm.get('firstName').invalid">{{'Auth.required' | translate}}</p>    
+            </div>  
         </div>
-        <div class="form-group">
-            <label for="lastName">{{'Auth.LastName' | translate}}</label>
-            <input
+        <div class="form-field">
+            <label for="lastName">{{'Auth.LastName' | translate}} *</label>
+            <input  [class.form-error]="myForm.get('lastName').touched && myForm.get('lastName').invalid"
                     type="text"
                     id="lastName"
                     class="form-control"
-                    formControlName="lastName">
+                    formControlName="lastName"
+            >
+            <div class="form-error">          
+                <p *ngIf="myForm.get('lastName').touched && myForm.get('lastName').invalid">{{'Auth.required' | translate}}</p>    
+            </div> 
         </div>
-        <div class="form-group">
-            <label for="email">{{'Auth.Email' | translate}}</label>
-            <input
+        <div class="form-field"> 
+            <label for="email">{{'Auth.Email' | translate}} *</label>
+            <input  [class.form-error]="myForm.get('email').touched && myForm.get('email').invalid"
                     type="email"
                     id="email"
                     class="form-control"
-                    formControlName="email">
-        </div>
-        <div class="form-group">
-            <label for="password">{{'Auth.Password' | translate}}</label>
-            <input
-                    type="password"
-                    id="password"
-                    class="form-control"
-                    formControlName="password">
-            <div 
-                *ngIf="password.touched && password.invalid"     
-                class="alert alert-danger"         
-            >      
-                <div *ngIf="password.errors.required">password required</div>        
-                <div *ngIf="password.errors.minLength">minlength {{password.errors.minLength.requiredLength}}</div>    
+                    formControlName="email"
+            >
+            <div *ngIf="myForm.get('email').touched && myForm.get('email').invalid"
+                class="form-error"
+            >          
+                <p *ngIf="myForm.get('email').errors.pattern">{{'Auth.validEmail' | translate}}</p>    
             </div>   
         </div>
+        <div class="form-field">
+            <label for="password">{{'Auth.Password' | translate}} *</label>
+            <input [class.form-error]="myForm.get('password').touched && myForm.get('password').invalid"
+                type="password"
+                id="password"
+                class="form-control"
+                formControlName="password"
+            >
+            <div class="form-error">          
+                <p *ngIf="myForm.get('password').touched && myForm.get('password').invalid && myForm.get('password').errors.minlength">{{'Auth.minLength' | translate:translationOblect}} </p>    
+            </div>   
+        </div>
+        <div class="form-field">
+            <label for="code">{{'Auth.Code' | translate}} *</label>
+            <input  [class.form-error]="myForm.get('code').touched && myForm.get('code').invalid"
+                type="text"
+                id="code"
+                class="form-control"
+                formControlName="code"
+            >
+            <div class="form-error">          
+                <p *ngIf="myForm.get('code').touched && myForm.get('code').invalid">{{'Auth.required' | translate}} </p>    
+            </div> 
+        </div>
         <button
-                class="btn btn-primary"
-                type="submit"
-                [disabled]="!myForm.valid">{{'Auth.SignUp' | translate}}</button>
+            class=""
+            type="submit"
+            [disabled]="!myForm.valid"
+        >
+            {{'Auth.SignUp' | translate}}
+        </button>
     </form>
 </div>

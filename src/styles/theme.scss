@@ -41,3 +41,22 @@ p {
 	left: calc(50vw - 40px);
 	top: calc(50vh - 40px);
 }
+
+a {
+	color: $color-main;
+	cursor: pointer;
+	outline : none;
+	border: none;
+}
+
+a:hover {
+	color: $color-hover;
+	cursor: pointer;
+	cursor: hand;
+}
+
+a img{
+	outline : none;
+	border: none;
+}
+
