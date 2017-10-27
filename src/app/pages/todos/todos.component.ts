@@ -2,7 +2,7 @@ import { Observable } from 'rxjs';
 import { BadInput } from './../../common/bad-input';
 import { NotFoundError } from './../../common/not-found-error';
 import { AppError } from './../../common/app-error';
-import { TodosService } from './../../services/todos.service';
+import { TodosService } from '../../shared/services/todos.service';
 import { Component, OnInit,OnChanges, SimpleChanges } from '@angular/core';
 import { FormGroup, FormControl, Validators } from "@angular/forms";
 
@@ -19,7 +19,19 @@ export class TodosComponent implements OnInit , OnChanges{
 
   getPosts() {
     this.todoService.getAll()
-    .subscribe(posts => this.posts = posts);
+    .subscribe(
+      posts => this.posts = posts,
+      (error: AppError) => {
+        if (error instanceof BadInput) {
+          // here could add a form error....
+
+          console.log("Input is not accepted");
+        } else {
+          console.log("yoyo");
+          throw error;  // throw error to be handled by global error handler
+        }
+      }
+    );
   }
 
   createPost() {

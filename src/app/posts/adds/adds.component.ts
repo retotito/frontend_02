@@ -1,5 +1,5 @@
 import { TranslateService } from '@ngx-translate/core';
-import { CategoriesService } from './../../services/categories.service';
+import { CategoriesService } from '../../shared/services/categories.service';
 import { Component, OnInit } from '@angular/core';
 import { FormGroup, FormControl, Validators } from "@angular/forms";
 

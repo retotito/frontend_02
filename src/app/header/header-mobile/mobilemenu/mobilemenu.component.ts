@@ -1,4 +1,4 @@
-import { MobileMenuService } from './../../../services/mobile-menu.service';
+import { MobileMenuService } from '../../../shared/services/mobile-menu.service';
 import { Component, OnInit } from '@angular/core';
 import {
   trigger,

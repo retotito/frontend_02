@@ -1,7 +1,7 @@
-import { AuthService } from './../auth/auth.service';
+import { AuthService } from '../shared/services/auth.service';
 import { Component, OnInit } from '@angular/core';
 import { Router } from '@angular/router';
-import { MobileMenuService } from './../services/mobile-menu.service';
+import { MobileMenuService } from '../shared/services/mobile-menu.service';
 
 @Component({
   selector: 'app-authwidget',

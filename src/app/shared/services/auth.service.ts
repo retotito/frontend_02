@@ -1,4 +1,4 @@
-import { environment } from './../../environments/environment';
+import { environment } from '../../../environments/environment';
 import { Injectable } from '@angular/core';
 import { Http, Headers, Response } from '@angular/http';
 import 'rxjs/Rx';
@@ -7,7 +7,7 @@ import { JwtHelper, tokenNotExpired } from 'angular2-jwt';
 
 
 
-import { User } from './user.model';
+import { User } from '../models/user.model';
 
 @Injectable()
 export class AuthService {

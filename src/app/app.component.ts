@@ -1,4 +1,4 @@
-import { MobileMenuService } from './services/mobile-menu.service';
+import { MobileMenuService } from './shared/services/mobile-menu.service';
 import { Component } from '@angular/core';
 import { TranslateService } from '@ngx-translate/core';
 

@@ -1,6 +1,6 @@
-import { BadInput } from './../common/bad-input';
-import { NotFoundError } from './../common/not-found-error';
-import { AppError } from './../common/app-error';
+import { BadInput } from '../../common/bad-input';
+import { NotFoundError } from '../../common/not-found-error';
+import { AppError } from '../../common/app-error';
 import { Injectable } from '@angular/core';
 import { Http, Headers, Response } from '@angular/http';
 //import 'rxjs/Rx';
