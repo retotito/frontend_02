@@ -9,6 +9,8 @@ import { RouterModule } from '@angular/router';
 import { TranslateLoader, TranslateModule } from '@ngx-translate/core';
 import { TranslateHttpLoader } from '@ngx-translate/http-loader';
 import { MasonryModule } from 'angular2-masonry';
+import { PagesModule } from 'app/pages/pages.module';
+import { SharedModule } from 'shared/shared.module';
 
 import { AppComponent } from './app.component';
 import { AuthwidgetComponent } from './authwidget/authwidget.component';
@@ -19,25 +21,15 @@ import { MainMenuComponent } from './header/header-desktop/main-menu/main-menu.c
 import { HeaderMobileComponent } from './header/header-mobile/header-mobile.component';
 import { MobilemenuComponent } from './header/header-mobile/mobilemenu/mobilemenu.component';
 import { HeaderComponent } from './header/header.component';
-import { AnimationsComponent } from './pages/animations/animations.component';
-import { AUTH_ROUTES } from './pages/authentication/auth.routes';
-import { AuthenticationComponent } from './pages/authentication/authentication.component';
-import { LogoutComponent } from './pages/authentication/logout/logout.component';
-import { SigninComponent } from './pages/authentication/signin/signin.component';
-import { SignupComponent } from './pages/authentication/signup/signup.component';
-import { PageAboutComponent } from './pages/page-about/page-about.component';
-import { PageAccountComponent } from './pages/page-account/page-account.component';
-import { PageGalleryComponent } from './pages/page-gallery/page-gallery.component';
-import { PageHomeComponent } from './pages/page-home/page-home.component';
-import { PageProjectsComponent } from './pages/page-projects/page-projects.component';
-import { TodosComponent } from './pages/todos/todos.component';
+import { AUTH_ROUTES } from './pages/components/authentication/auth.routes';
+import { AuthenticationComponent } from './pages/components/authentication/authentication.component';
+import { PageAccountComponent } from './pages/components/page-account/page-account.component';
+import { PageGalleryComponent } from './pages/components/page-gallery/page-gallery.component';
+import { PageHomeComponent } from './pages/components/page-home/page-home.component';
+import { PageProjectsComponent } from './pages/components/page-projects/page-projects.component';
+import { SasstestComponent } from './pages/components/sasstest/sasstest.component';
+import { TodosComponent } from './pages/components/todos/todos.component';
 import { AddsComponent } from './posts/adds/adds.component';
-import { SasstestComponent } from './sasstest/sasstest.component';
-import { AuthService } from './shared/services/auth.service';
-import { CategoriesService } from './shared/services/categories.service';
-import { MobileMenuService } from './shared/services/mobile-menu.service';
-import { TodosService } from './shared/services/todos.service';
-import { SharedModule } from 'shared/shared.module';
 
 export function HttpLoaderFactory(http: HttpClient) {
   return new TranslateHttpLoader(http, './assets/i18n/', '.json');
@@ -51,24 +43,13 @@ export function HttpLoaderFactory(http: HttpClient) {
     HeaderComponent,
     HeaderDesktopComponent,
     HeaderMobileComponent,
-    PageAboutComponent,
-    PageProjectsComponent,
-    PageAccountComponent,
-    PageGalleryComponent,
-    PageHomeComponent,
-    SignupComponent,
-    SigninComponent,
-    LogoutComponent,
-    AuthenticationComponent,
     AuthwidgetComponent,
-    TodosComponent,
-    AnimationsComponent,
     MobilemenuComponent,
-    SasstestComponent,
     FloatingTriggerComponent
   ],
   imports: [
     SharedModule,
+    PagesModule,
     HttpModule,
     ReactiveFormsModule,
     BrowserModule,
@@ -76,14 +57,12 @@ export function HttpLoaderFactory(http: HttpClient) {
     MasonryModule,
     RouterModule.forRoot([
       {path: '',component: PageHomeComponent},
-      {path: 'about',component: PageAboutComponent},
       {path: 'projects',component: PageProjectsComponent},
       {path: 'gallery',component: PageGalleryComponent},
       {path: 'account',component: PageAccountComponent},
       {path: 'auth',component: AuthenticationComponent, children: AUTH_ROUTES},
       {path: 'todos',component: TodosComponent},
-      {path: 'animations',component: AnimationsComponent},
-      {path: 'sass',component: SasstestComponent}
+      {path: 'grid',component: SasstestComponent}
     ]),
     HttpClientModule,
     TranslateModule.forRoot({

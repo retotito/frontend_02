@@ -1,15 +1,15 @@
 import { Observable } from 'rxjs';
-import { BadInput } from './../../common/bad-input';
-import { NotFoundError } from './../../common/not-found-error';
-import { AppError } from './../../common/app-error';
-import { TodosService } from '../../shared/services/todos.service';
+import { BadInput } from '../../../common/bad-input';
+import { NotFoundError } from '../../../common/not-found-error';
+import { AppError } from '../../../common/app-error';
+import { TodosService } from 'shared/services/todos.service';
 import { Component, OnInit,OnChanges, SimpleChanges } from '@angular/core';
 import { FormGroup, FormControl, Validators } from "@angular/forms";
 
 @Component({
   selector: 'app-todos',
   templateUrl: './todos.component.html',
-  styleUrls: ['./todos.component.css']
+  styleUrls: ['./todos.component.scss']
 })
 export class TodosComponent implements OnInit , OnChanges{
   myForm: FormGroup;
