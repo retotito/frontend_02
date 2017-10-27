@@ -15,7 +15,8 @@ import { TodosService } from 'shared/services/todos.service';
   ],
   exports: [
     LangwidgetComponent
-  ],providers: [
+  ],
+  providers: [
     AuthService,
     TodosService,
     CategoriesService,

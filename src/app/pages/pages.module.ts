@@ -13,17 +13,14 @@ import { CommonModule } from '@angular/common';
 import { TranslateModule } from '@ngx-translate/core';
 import { ReactiveFormsModule } from '@angular/forms';
 import { RouterModule } from '@angular/router';
-import { AUTH_ROUTES } from './components/authentication/auth.routes';
-
+import { ROUTES } from 'app/common/routes';
 
 @NgModule({
   imports: [
     CommonModule,
     TranslateModule,
     ReactiveFormsModule,
-    RouterModule.forChild([
-      {path: 'auth',component: AuthenticationComponent, children: AUTH_ROUTES},
-    ]),
+    RouterModule.forChild(ROUTES)
   ],
   declarations: [
     PageProjectsComponent,
