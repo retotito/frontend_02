@@ -22,7 +22,7 @@ import { HeaderMobileComponent } from './header/header-mobile/header-mobile.comp
 import { MobilemenuComponent } from './header/header-mobile/mobilemenu/mobilemenu.component';
 import { HeaderComponent } from './header/header.component';
 import { AddsComponent } from './posts/adds/adds.component';
-import { AuthwidgetComponent } from './shared/components/authwidget/authwidget.component';
+import { HeaderModule } from 'app/header/header.module';
 
 export function HttpLoaderFactory(http: HttpClient) {
   return new TranslateHttpLoader(http, './assets/i18n/', '.json');
@@ -31,16 +31,10 @@ export function HttpLoaderFactory(http: HttpClient) {
 @NgModule({
   declarations: [
     AppComponent,
-    AddsComponent,
-    MainMenuComponent,
-    HeaderComponent,
-    HeaderDesktopComponent,
-    HeaderMobileComponent,
-    AuthwidgetComponent,
-    MobilemenuComponent,
-    FloatingTriggerComponent
+    AddsComponent
   ],
   imports: [
+    HeaderModule,
     SharedModule,
     PagesModule,
     HttpModule,
