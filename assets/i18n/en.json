@@ -1,8 +1,26 @@
 {
-    "Title": "Translation example",
-    "Intro": "Hello I am {{name}}, I am {{age}} years old.",
+    "page-home":{
+        "welcome":"Welcome to my Angular-Demopage",
+        "intro":"Diese ist eine Angular 4 Webseite.",
+        "intro2":"Das Backend enthält Folgende Komponenten:",
+        "h2-technologies":"Technologies in use for this project:",
+        "h2-progress":"Project progress:",
+        "todos":{
+            "01":"Mobile menu",
+            "02":"Responsive Grid",
+            "03":"Localization",
+            "04":"Authentication",
+            "05":"Reacitive form",
+            "06":"Image upload",
+            "07":"Drag n drop",
+            "08":"Data table",
+            "09":"Categories",
+            "10":"Geolocation reverse",
+            "11":"Elastic Search"
+        }
+    },
     "Mainmenu": {
-        "About":"About",
+        "Grid":"Grid",
         "Projects":"Projects",
         "Gallery":"Gallery",
         "Account":"Account"
@@ -14,6 +32,13 @@
         "NoAccountYet":"No account yet? Signup here.",
         "FirstName":"First Name",
         "LastName":"Last Name",
-        "SignUp":"Signup"
+        "SignUp":"Signup",
+        "Code":"Authentication code",
+        "minLength":"Minimum {{minLength}} characters.",
+        "validEmail":"Please enter a valid email adress.",
+        "required":"Required field.",
+        "emailInUse":"That email address is already in use.",
+        "authCode":"This code is not valid.",
+        "loginError":"Incorrect Email or Password."
     }
 }
