@@ -15,12 +15,12 @@ import { SharedModule } from 'shared/shared.module';
 
 import { AppComponent } from './app.component';
 import { AppErrorHandler } from './common/app-error-handler';
-import { FloatingTriggerComponent } from './header/floating-trigger/floating-trigger.component';
-import { HeaderDesktopComponent } from './header/header-desktop/header-desktop.component';
-import { MainMenuComponent } from './header/header-desktop/main-menu/main-menu.component';
-import { HeaderMobileComponent } from './header/header-mobile/header-mobile.component';
-import { MobilemenuComponent } from './header/header-mobile/mobilemenu/mobilemenu.component';
-import { HeaderComponent } from './header/header.component';
+import { FloatingTriggerComponent } from './header/components/floating-trigger/floating-trigger.component';
+import { HeaderDesktopComponent } from './header/components/header/header-desktop/header-desktop.component';
+import { MainMenuComponent } from './header/components/header/header-desktop/main-menu/main-menu.component';
+import { HeaderMobileComponent } from './header/components/header/header-mobile/header-mobile.component';
+import { MobilemenuComponent } from './header/components/header/header-mobile/mobilemenu/mobilemenu.component';
+import { HeaderComponent } from './header/components/header/header.component';
 import { AddsComponent } from './posts/adds/adds.component';
 import { HeaderModule } from 'app/header/header.module';
 

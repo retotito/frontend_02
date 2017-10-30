@@ -1,8 +1,13 @@
 <nav id="main-nav">
   <ul>
+    <li *ngFor="let menuItem of menuItems" routerLinkActive="active_menu">
+      <a routerLink="{{menuItem.path}}">{{ menuItem.i18n | translate}}</a>
+    </li>
+    <!--
     <li routerLinkActive="active_menu"><a routerLink="/grid">{{ 'Mainmenu.Grid' | translate}}</a></li>
     <li routerLinkActive="active_menu"><a routerLink="/projects">{{ 'Mainmenu.Projects' | translate}}</a></li>
     <li routerLinkActive="active_menu"><a routerLink="/gallery">{{ 'Mainmenu.Gallery' | translate}}</a></li>
     <li routerLinkActive="active_menu"><a routerLink="/account">{{ 'Mainmenu.Account' | translate}}</a></li>
+    -->
   </ul>
 </nav> 

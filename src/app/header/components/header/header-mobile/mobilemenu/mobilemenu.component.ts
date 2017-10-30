@@ -1,4 +1,5 @@
-import { MobileMenuService } from '../../../shared/services/mobile-menu.service';
+import { MAINMENU } from 'app/common/main-menu';
+import { MobileMenuService } from '../../../../../shared/services/mobile-menu.service';
 import { Component, OnInit } from '@angular/core';
 import {
   trigger,
@@ -30,6 +31,7 @@ import {
 })
 export class MobilemenuComponent  {
   myMenuState = 'closed';
+  menuItems = MAINMENU;
 
   constructor(public mmService: MobileMenuService) { }
 
