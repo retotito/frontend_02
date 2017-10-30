@@ -1,3 +1,4 @@
+import { AuthGuard } from './services/auth-guard.service';
 import { RouterModule } from '@angular/router';
 import { CommonModule } from '@angular/common';
 import { NgModule } from '@angular/core';
@@ -26,7 +27,8 @@ import { ROUTES } from 'app/common/routes';
     AuthService,
     TodosService,
     CategoriesService,
-    MobileMenuService
+    MobileMenuService,
+    AuthGuard
   ]
 })
 export class SharedModule { }

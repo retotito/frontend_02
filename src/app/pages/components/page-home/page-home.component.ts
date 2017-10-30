@@ -39,7 +39,7 @@ export class PageHomeComponent implements OnInit {
       { name:"04",
       status:"done"},
       { name:"05",
-      status:"open"},
+      status:"done"},
       { name:"06",
       status:"open"},
       { name:"07",

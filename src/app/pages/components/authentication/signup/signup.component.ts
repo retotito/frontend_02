@@ -1,3 +1,4 @@
+import { Router } from '@angular/router';
 import { Component, OnInit } from "@angular/core";
 import { FormGroup, FormControl, Validators } from "@angular/forms";
 
@@ -12,11 +13,16 @@ import { User } from 'shared/models/user.model';
 export class SignupComponent implements OnInit {
     myForm: FormGroup;
     passwordMinLength = 8;
-    translationOblect = {
+    translationObject = {
         "minLength":this.passwordMinLength
     }
+    emailInUse = false;
+    authcodeNotValid = false;
 
-    constructor(private authService: AuthService) {}
+    constructor(
+        private authService: AuthService,
+        private router: Router
+    ) {}
 
     onSubmit() {
         const user = new User(
@@ -28,15 +34,36 @@ export class SignupComponent implements OnInit {
         );
         //console.log (user);
         
+        this.emailInUse = false;
+        this.authcodeNotValid = false;
         this.authService.signup(user) 
             .subscribe (
-                data => console.log(data),
+                data => {
+                    console.log(data),
+                    this.myForm.reset();
+                    this.router.navigate(['/auth/signin']);
+                },
                 error => {
-                    console.log("yoyo-------");
+                    this.errorHandler(error);
                     console.log(error);
                 }
             );
-        this.myForm.reset();
+    }
+
+    errorHandler(error) {
+        if (error['error']['104']) {
+            this.authcodeNotValid = true;
+        }
+        if (error['error']['105']) {
+            this.emailInUse = true;
+        }
+    }
+    clearEmailError() {
+        this.emailInUse = false;
+    }
+
+    clearCodeError() {
+        this.authcodeNotValid = false;
     }
 
     ngOnInit() {

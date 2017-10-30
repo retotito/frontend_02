@@ -36,6 +36,9 @@
         "Code":"Authentication code",
         "minLength":"Minimum {{minLength}} characters.",
         "validEmail":"Please enter a valid email adress.",
-        "required":"Required field."
+        "required":"Required field.",
+        "emailInUse":"That email address is already in use.",
+        "authCode":"This code is not valid.",
+        "loginError":"Incorrect Email or Password."
     }
 }

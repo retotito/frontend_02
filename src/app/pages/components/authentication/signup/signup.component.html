@@ -1,4 +1,5 @@
 <div id="signup-form">
+    <h1>{{'Auth.SignUp' | translate}}</h1>
     <form [formGroup]="myForm" (ngSubmit)="onSubmit()">
         <div class="form-field">
             <label for="firstName">{{'Auth.FirstName' | translate}} *</label>
@@ -26,40 +27,50 @@
         </div>
         <div class="form-field"> 
             <label for="email">{{'Auth.Email' | translate}} *</label>
-            <input  [class.form-error]="myForm.get('email').touched && myForm.get('email').invalid"
-                    type="email"
-                    id="email"
-                    class="form-control"
-                    formControlName="email"
+            <input  
+                [class.form-error]="myForm.get('email').touched && myForm.get('email').invalid"
+                (keyup)="clearEmailError()"
+                type="email"
+                id="email"
+                class="form-control"
+                formControlName="email"
             >
-            <div *ngIf="myForm.get('email').touched && myForm.get('email').invalid"
+            <div 
+                *ngIf="myForm.get('email').touched && myForm.get('email').invalid"
                 class="form-error"
             >          
                 <p *ngIf="myForm.get('email').errors.pattern">{{'Auth.validEmail' | translate}}</p>    
-            </div>   
+            </div>  
+            <div class="form-error">
+                <p *ngIf="emailInUse">{{'Auth.emailInUse' | translate}}</p>  
+            </div> 
         </div>
         <div class="form-field">
             <label for="password">{{'Auth.Password' | translate}} *</label>
-            <input [class.form-error]="myForm.get('password').touched && myForm.get('password').invalid"
+            <input 
+                [class.form-error]="myForm.get('password').touched && myForm.get('password').invalid"
                 type="password"
                 id="password"
                 class="form-control"
                 formControlName="password"
             >
             <div class="form-error">          
-                <p *ngIf="myForm.get('password').touched && myForm.get('password').invalid && myForm.get('password').errors.minlength">{{'Auth.minLength' | translate:translationOblect}} </p>    
+                <p *ngIf="myForm.get('password').touched && myForm.get('password').invalid && myForm.get('password').errors.minlength">{{'Auth.minLength' | translate:translationObject}} </p>    
             </div>   
         </div>
         <div class="form-field">
             <label for="code">{{'Auth.Code' | translate}} *</label>
-            <input  [class.form-error]="myForm.get('code').touched && myForm.get('code').invalid"
-                type="text"
+            <input  
+                [class.form-error]="myForm.get('code').touched && myForm.get('code').invalid"
+                (keyup)="clearCodeError()"
+                type="password"
                 id="code"
                 class="form-control"
                 formControlName="code"
             >
             <div class="form-error">          
                 <p *ngIf="myForm.get('code').touched && myForm.get('code').invalid">{{'Auth.required' | translate}} </p>    
+                <p *ngIf="authcodeNotValid">{{'Auth.authCode' | translate}}</p> 
             </div> 
         </div>
         <button

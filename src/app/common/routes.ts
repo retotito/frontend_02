@@ -1,3 +1,4 @@
+import { AuthGuard } from './../shared/services/auth-guard.service';
 import { Routes  } from '@angular/router';
 
 import { PageHomeComponent } from "app/pages/components/page-home/page-home.component";
@@ -15,7 +16,7 @@ export const ROUTES:  Routes = [
     {path: '',component: PageHomeComponent},
     {path: 'projects',component: PageProjectsComponent},
     {path: 'gallery',component: PageGalleryComponent},
-    {path: 'account',component: PageAccountComponent},
+    {path: 'account',component: PageAccountComponent, canActivate: [AuthGuard]},
     {path: 'auth',component: AuthenticationComponent, children: [
         { path: 'signup', component: SignupComponent},
         { path: 'signin', component: SigninComponent},

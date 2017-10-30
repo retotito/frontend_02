@@ -11,38 +11,39 @@ import { Router } from '@angular/router';
   styleUrls: ['./signin.component.scss']
 })
 export class SigninComponent implements OnInit {
-
+    myForm: FormGroup;
+    loginError = false;
+    
     constructor(private authService: AuthService, private router: Router) {}
 
-    myForm: FormGroup;
-  
     onSubmit() {
         const user = new User (
             this.myForm.value.email,
             this.myForm.value.password
         );
-        console.log(user);
+
         this.authService.signin(user)
             .subscribe(
                 data => {
+                    this.myForm.reset();
                     localStorage.setItem('token', data.token);
                     localStorage.setItem('userId', data.user._id);
                     this.router.navigateByUrl('//account');
                 },
                 error => {
-                    console.log(error);
+                    this.loginError = true;
+                    //console.log(error);
                 }
             );
-        this.myForm.reset();
     }
   
     ngOnInit() {
         this.myForm = new FormGroup({
             email: new FormControl(null, [
-                Validators.required,
-                Validators.pattern("[a-z0-9!#$%&'*+/=?^_`{|}~-]+(?:\.[a-z0-9!#$%&'*+/=?^_`{|}~-]+)*@(?:[a-z0-9](?:[a-z0-9-]*[a-z0-9])?\.)+[a-z0-9](?:[a-z0-9-]*[a-z0-9])?")
+                //Validators.required,
+                Validators.pattern (/^(([^<>()\[\]\\.,;:\s@"]+(\.[^<>()\[\]\\.,;:\s@"]+)*)|(".+"))@((\[[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}])|(([a-zA-Z\-0-9]+\.)+[a-zA-Z]{2,}))$/)
             ]),
-             password: new FormControl(null, Validators.required)
+            password: new FormControl(null, Validators.required)
         });
     }
 }
