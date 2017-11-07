@@ -12,7 +12,6 @@ import { LogoutComponent } from './components/authentication/logout/logout.compo
 import { NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { TranslateModule } from '@ngx-translate/core';
-import { ReactiveFormsModule } from '@angular/forms';
 import { RouterModule } from '@angular/router';
 import { ROUTES } from 'app/common/routes';
 
@@ -20,7 +19,6 @@ import { ROUTES } from 'app/common/routes';
   imports: [
     CommonModule,
     TranslateModule,
-    ReactiveFormsModule,
     RouterModule.forChild(ROUTES),
     SharedModule
   ],

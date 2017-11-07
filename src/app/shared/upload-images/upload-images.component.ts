@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, OnDestroy} from '@angular/core';
 import { DragulaService } from 'ng2-dragula/ng2-dragula';
 
 @Component({
@@ -6,11 +6,11 @@ import { DragulaService } from 'ng2-dragula/ng2-dragula';
   templateUrl: './upload-images.component.html',
   styleUrls: ['./upload-images.component.scss']
 })
-export class UploadImagesComponent implements OnInit {
+export class UploadImagesComponent implements OnInit, OnDestroy {
 
   constructor(private dragulaService: DragulaService) {
     dragulaService.setOptions('first-bag', {
-      revertOnSpill: true
+      
     });
   }
 
@@ -48,13 +48,17 @@ export class UploadImagesComponent implements OnInit {
   }
 
   deleteImage(image) {
-    console.log("yoyo deleted");
-    console.log(image);
     let index = this.images.indexOf(image);
     this.images.splice(index, 1);
   }
 
+
   ngOnInit() {
   }
+
+  ngOnDestroy():void {
+    this.dragulaService.destroy("first-bag");
+ }
+ 
 
 }

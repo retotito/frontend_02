@@ -1,4 +1,3 @@
-import { ImageCropperComponent } from 'ng2-img-cropper';
 import { AuthGuard } from './services/auth-guard.service';
 import { RouterModule } from '@angular/router';
 import { CommonModule } from '@angular/common';
@@ -13,33 +12,41 @@ import { ROUTES } from 'app/common/routes';
 import { UploadImageComponent } from './components/upload-image/upload-image.component';
 import { UploadImagesComponent } from './upload-images/upload-images.component';
 import { DragulaModule } from 'ng2-dragula';
+import { TranslateModule } from '@ngx-translate/core';
+import { UserComponent } from './components/user/user.component';
+import { ReactiveFormsModule } from '@angular/forms';
+import { UserService } from 'shared/services/user.service';
 
 @NgModule({
   imports: [
     CommonModule,
+    TranslateModule,
     RouterModule.forChild(ROUTES),
-    DragulaModule
+    DragulaModule,
+    ReactiveFormsModule
   ],
   declarations: [
     LangwidgetComponent,
     AuthwidgetComponent,
-    ImageCropperComponent,
     UploadImageComponent,
-    UploadImagesComponent
+    UploadImagesComponent,
+    UserComponent
   ],
   exports: [
     LangwidgetComponent,
     AuthwidgetComponent,
-    ImageCropperComponent,
     UploadImageComponent,
-    UploadImagesComponent
+    UploadImagesComponent,
+    UserComponent,
+    ReactiveFormsModule
   ],
   providers: [
     AuthService,
     TodosService,
     CategoriesService,
     MobileMenuService,
-    AuthGuard
+    AuthGuard,
+    UserService
   ]
 })
 export class SharedModule { }

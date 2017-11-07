@@ -33,6 +33,7 @@
         "FirstName":"First Name",
         "LastName":"Last Name",
         "SignUp":"Signup",
+        "Update":"Update",
         "Code":"Authentication code",
         "minLength":"Minimum {{minLength}} characters.",
         "validEmail":"Please enter a valid email adress.",
@@ -40,5 +41,6 @@
         "emailInUse":"That email address is already in use.",
         "authCode":"This code is not valid.",
         "loginError":"Incorrect Email or Password."
-    }
+    },
+    "addImages":"add Images"
 }

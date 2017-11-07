@@ -3,15 +3,16 @@
       [dragula]='"first-bag"' 
       [dragulaModel]='images'
   >
-    <li *ngFor="let image of images">
+    <li *ngFor="let image of images; let i = index">
         <app-upload-image 
             [imgEvent]="image"
             (onDeleteImage)="deleteImage(image)"
         >  
         </app-upload-image>
     </li>
+    <div class="clear"></div>
   </ul>
-  <div class="clear"></div>
+  
 </div>
 
 <input  
@@ -21,4 +22,4 @@
   multiple
   (change)="addImages($event)"
 >
-<button id="addImages" (click)="clickChooseFiles()">add Images</button>
+<button id="addImages" (click)="clickChooseFiles()">{{ 'addImages' | translate}}</button>

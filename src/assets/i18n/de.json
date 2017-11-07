@@ -33,6 +33,7 @@
         "FirstName":"Vorname",
         "LastName":"Nachname",
         "SignUp":"Registrieren",
+        "Update":"Aktualisieren",
         "Code":"Autorisierungscode",
         "minLength":"Mindestens {{minLength}} Charakter.",
         "validEmail":"Bitte gültige Emailadresse eingeben.",
@@ -40,5 +41,6 @@
         "emailInUse":"Diese Emailadresse wird bereits verwendet.",
         "authCode":"Der Code ist nicht gültig",
         "loginError":"Email oder Passwort ist nicht korrekt."
-    }
+    },
+    "addImages":"Bilder hinzufügen"
 }
