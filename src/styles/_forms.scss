@@ -47,6 +47,7 @@ input.form-error {
 button {
     background-color: $form-valid-bg;
     border: none;
+    outline: none !important;
     color: white;
     font-size: 20px;
     padding: 4px 20px 4px 20px;

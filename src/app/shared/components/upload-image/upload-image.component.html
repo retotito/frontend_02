@@ -1,0 +1,13 @@
+<div  class="thumbnail" 
+      [style.background-image]="'url(' + url + ')'" 
+>
+  <i  (click)="onDeleteImage.emit($event.currentTarget)" 
+      class="fa fa-ban deleteThumb" 
+      aria-hidden="true"
+  >
+  </i>
+  <i  class="fa fa-pencil editThumb" 
+      hidden="true"
+  >
+  </i>
+</div>

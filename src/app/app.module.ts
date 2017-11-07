@@ -10,9 +10,11 @@ import { TranslateLoader, TranslateModule } from '@ngx-translate/core';
 import { TranslateHttpLoader } from '@ngx-translate/http-loader';
 import { MasonryModule } from 'angular2-masonry';
 import { ROUTES } from 'app/common/routes';
+import { DragulaModule } from 'ng2-dragula';
+
+
 import { PagesModule } from 'app/pages/pages.module';
 import { SharedModule } from 'shared/shared.module';
-
 import { AppComponent } from './app.component';
 import { AppErrorHandler } from './common/app-error-handler';
 import { FloatingTriggerComponent } from './header/components/floating-trigger/floating-trigger.component';
@@ -44,6 +46,7 @@ export function HttpLoaderFactory(http: HttpClient) {
     MasonryModule,
     RouterModule.forRoot(ROUTES),
     HttpClientModule,
+    DragulaModule,
     TranslateModule.forRoot({
       loader: {
         provide: TranslateLoader,

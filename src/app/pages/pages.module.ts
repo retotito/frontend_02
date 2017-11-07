@@ -1,3 +1,4 @@
+import { SharedModule } from 'shared/shared.module';
 import { PageProjectsComponent } from './components/page-projects/page-projects.component';
 import { PageAccountComponent } from './components/page-account/page-account.component';
 import { PageGalleryComponent } from './components/page-gallery/page-gallery.component';
@@ -20,7 +21,8 @@ import { ROUTES } from 'app/common/routes';
     CommonModule,
     TranslateModule,
     ReactiveFormsModule,
-    RouterModule.forChild(ROUTES)
+    RouterModule.forChild(ROUTES),
+    SharedModule
   ],
   declarations: [
     PageProjectsComponent,
