@@ -40,5 +40,6 @@
         "emailInUse":"That email address is already in use.",
         "authCode":"This code is not valid.",
         "loginError":"Incorrect Email or Password."
-    }
+    },
+    "addImages":"add Images"
 }
