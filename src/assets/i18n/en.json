@@ -40,7 +40,8 @@
         "required":"Required field.",
         "emailInUse":"That email address is already in use.",
         "authCode":"This code is not valid.",
-        "loginError":"Incorrect Email or Password."
+        "loginError":"Incorrect Email or Password.",
+        "profilePhoto":"Profil Photo"
     },
     "addImages":"add Images"
 }

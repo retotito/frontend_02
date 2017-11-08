@@ -3,6 +3,7 @@
         <div class="form-field">
             <label for="firstName">{{'Auth.FirstName' | translate}} *</label>
             <input  [class.form-error]="myForm.get('firstName').touched && myForm.get('firstName').invalid"
+                    [(ngModel)]="user.firstname"
                     type="text"
                     id="firstName"
                     class="form-control"
@@ -15,6 +16,7 @@
         <div class="form-field">
             <label for="lastName">{{'Auth.LastName' | translate}} *</label>
             <input  [class.form-error]="myForm.get('lastName').touched && myForm.get('lastName').invalid"
+                    [(ngModel)]="user.lastname"
                     type="text"
                     id="lastName"
                     class="form-control"
@@ -29,6 +31,7 @@
             <input  
                 [class.form-error]="myForm.get('email').touched && myForm.get('email').invalid"
                 (keyup)="clearEmailError()"
+                [(ngModel)]="user.email"
                 type="email"
                 id="email"
                 class="form-control"
@@ -44,19 +47,7 @@
                 <p *ngIf="emailInUse">{{'Auth.emailInUse' | translate}}</p>  
             </div> 
         </div>
-        <div class="form-field">
-            <label for="password">{{'Auth.Password' | translate}} *</label>
-            <input 
-                [class.form-error]="myForm.get('password').touched && myForm.get('password').invalid"
-                type="password"
-                id="password"
-                class="form-control"
-                formControlName="password"
-            >
-            <div class="form-error">          
-                <p *ngIf="myForm.get('password').touched && myForm.get('password').invalid && myForm.get('password').errors.minlength">{{'Auth.minLength' | translate:translationObject}} </p>    
-            </div>   
-        </div>
+        
         <button
             class=""
             type="submit"
@@ -65,4 +56,17 @@
             {{'Auth.Update' | translate}}
         </button>
     </form>
+
+    <div id="avatar-wrapper">
+        <input  
+            (change)="updateAvatar($event)"
+            type='file' 
+            accept=".png, .jpg, .jpeg"
+            id="avatar-input"
+        >
+        <div 
+            id="avatar"
+            [style.background-image]="'url(' + (user.avatar ? user.avatar : placeholderImg) + ')'" 
+        ></div>
+    </div>
 </div>

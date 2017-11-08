@@ -40,7 +40,8 @@
         "required":"Pflichtfeld",
         "emailInUse":"Diese Emailadresse wird bereits verwendet.",
         "authCode":"Der Code ist nicht gültig",
-        "loginError":"Email oder Passwort ist nicht korrekt."
+        "loginError":"Email oder Passwort ist nicht korrekt.",
+        "profilePhoto":"Profilfoto"
     },
     "addImages":"Bilder hinzufügen"
 }

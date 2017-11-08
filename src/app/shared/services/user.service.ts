@@ -7,7 +7,7 @@ import { Http } from '@angular/http';
 export class UserService extends DataService{
  
   constructor(http: Http) {
-    super(environment.resturl+'/api/user', http);
+    super(environment.resturl+'/api/users/', http);
   }
 }
 

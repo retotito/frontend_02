@@ -6,6 +6,7 @@ import { UserService } from 'shared/services/user.service';
 import { User } from 'shared/models/user.model';
 import { AppError } from 'app/common/app-error';
 import { BadInput } from 'app/common/bad-input';
+import 'rxjs/add/operator/take';
 
 @Component({
   selector: 'app-user',
@@ -20,7 +21,8 @@ export class UserComponent implements OnInit {
     }
     emailInUse = false;
     authcodeNotValid = false;
-    user:User = null;
+    user = {};  // not set to null to avoid a null pointer exeption in the html [(ngModel="")]
+    placeholderImg = "assets/images/placeholder.png";
 
     constructor(
         private UserService: UserService,
@@ -28,20 +30,29 @@ export class UserComponent implements OnInit {
     ) {}
 
     getUser() {
-      this.UserService.getAll()
-      .subscribe(
-        user => this.user = user,
-        (error: AppError) => {
-          if (error instanceof BadInput) {
-            // here could add a form error....
-  
-            console.log("Input is not accepted");
-          } else {
-            console.log("yoyo");
-            throw error;  // throw error to be handled by global error handler
-          }
-        }
-      );
+        this.UserService.queryAll(localStorage.getItem("userId"))
+        .take(1)   // use this operator to unsubscribe after 1 item
+        .subscribe(
+            user => {
+                this.user = user[0];
+                this.user["avatar"]="assets/images/reto-kuepfer.jpg";
+                console.log(user);
+            },
+            (error: AppError) => {
+            if (error instanceof BadInput) {
+                // here could add a form error....
+    
+                console.log("Input is not accepted");
+            } else {
+                console.log("yoyo");
+                throw error;  // throw error to be handled by global error handler
+            }
+            }
+        );
+    }
+
+    updateAvatar(event) {
+        console.log(event.srcElement.files);
     }
 
 
@@ -49,7 +60,6 @@ export class UserComponent implements OnInit {
     onSubmit() {
         const user = new User(
             this.myForm.value.email,
-            this.myForm.value.password,
             this.myForm.value.firstName,
             this.myForm.value.lastName,
             this.myForm.value.code
@@ -92,7 +102,7 @@ export class UserComponent implements OnInit {
       this.getUser();
 
         this.myForm = new FormGroup({
-            firstName: new FormControl("maxi", [ 
+            firstName: new FormControl(null, [ 
                 Validators.required,
             ]),
             lastName: new FormControl(null, [ 
@@ -101,10 +111,6 @@ export class UserComponent implements OnInit {
             email: new FormControl(null, [
                 //Validators.required,
                 Validators.pattern (/^(([^<>()\[\]\\.,;:\s@"]+(\.[^<>()\[\]\\.,;:\s@"]+)*)|(".+"))@((\[[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}])|(([a-zA-Z\-0-9]+\.)+[a-zA-Z]{2,}))$/)
-            ]),
-            password: new FormControl(null, [             
-                //Validators.required,                                            // assigne multiple Validators by []
-                Validators.minLength(this.passwordMinLength)  
             ])
         });
     }

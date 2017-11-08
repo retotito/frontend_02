@@ -10,7 +10,7 @@ import { TodosService } from 'shared/services/todos.service';
 import { AuthwidgetComponent } from 'shared/components/authwidget/authwidget.component';
 import { ROUTES } from 'app/common/routes';
 import { UploadImageComponent } from './components/upload-image/upload-image.component';
-import { UploadImagesComponent } from './upload-images/upload-images.component';
+import { UploadImagesComponent } from './components/upload-images/upload-images.component';
 import { DragulaModule } from 'ng2-dragula';
 import { TranslateModule } from '@ngx-translate/core';
 import { UserComponent } from './components/user/user.component';
