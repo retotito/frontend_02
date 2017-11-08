@@ -1,3 +1,4 @@
+import { AvatarService } from './services/avatar.service';
 import { AuthGuard } from './services/auth-guard.service';
 import { RouterModule } from '@angular/router';
 import { CommonModule } from '@angular/common';
@@ -46,7 +47,8 @@ import { UserService } from 'shared/services/user.service';
     CategoriesService,
     MobileMenuService,
     AuthGuard,
-    UserService
+    UserService,
+    AvatarService
   ]
 })
 export class SharedModule { }

@@ -18,17 +18,17 @@ export class UploadImagesComponent implements OnInit, OnDestroy {
   url = "assets/images/placeholder.png";
   images = [];
 
-  readUrl(event) {
-    if (event.target.files && event.target.files[0]) {
-      var reader = new FileReader();
+  // readUrl(event) {
+  //   if (event.target.files && event.target.files[0]) {
+  //     var reader = new FileReader();
     
-      reader.onload = (event:any) => {
-        this.url = event.target.result;
-      }
+  //     reader.onload = (event:any) => {
+  //       this.url = event.target.result;
+  //     }
     
-      reader.readAsDataURL(event.target.files[0]);
-    }
-  }
+  //     reader.readAsDataURL(event.target.files[0]);
+  //   }
+  // }
 
   clickChooseFiles() {
     document.getElementById('chooseFiles').click();

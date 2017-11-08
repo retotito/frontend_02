@@ -42,6 +42,23 @@ export class DataService {
       .catch(this.handleError);
   }
 
+  upload(resource: any){
+    let headers = new Headers();
+    //headers.append('Content-Type', 'multipart');
+    headers.append('Authorization', this.getToken());
+    
+    return this.http.post(this.url, resource, {headers: headers})
+      .map((res:Response) => res.json())  
+      .catch(this.handleError);
+  }
+
+  // upload(formdata: any ) {
+  //   let _url: string = 'http://localhost:8080/api/uploads';
+  //   return this.http.post(_url, formdata)
+  //     .map((res:Response) => res.json())  
+  //     .catch(this.handleError);
+  // }
+
   update(resource){
     return this.http.patch(this.url + '/' + resource.id, JSON.stringify(resource.title))  // to be dynamic
       .map((res:Response) => res.json())    

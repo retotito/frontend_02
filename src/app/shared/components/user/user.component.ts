@@ -1,8 +1,9 @@
 import { Router } from '@angular/router';
-import { Component, OnInit } from "@angular/core";
+import { Component, OnInit,  ElementRef } from "@angular/core";
 import { FormGroup, FormControl, Validators } from "@angular/forms";
 
 import { UserService } from 'shared/services/user.service';
+import { AvatarService } from 'shared/services/avatar.service';
 import { User } from 'shared/models/user.model';
 import { AppError } from 'app/common/app-error';
 import { BadInput } from 'app/common/bad-input';
@@ -26,7 +27,9 @@ export class UserComponent implements OnInit {
 
     constructor(
         private UserService: UserService,
-        private router: Router
+        private AvatarService: AvatarService,
+        private router: Router,
+        private elem: ElementRef
     ) {}
 
     getUser() {
@@ -35,7 +38,7 @@ export class UserComponent implements OnInit {
         .subscribe(
             user => {
                 this.user = user[0];
-                this.user["avatar"]="assets/images/reto-kuepfer.jpg";
+                //this.user["avatar"]="assets/images/reto-kuepfer.jpg";
                 console.log(user);
             },
             (error: AppError) => {
@@ -52,7 +55,43 @@ export class UserComponent implements OnInit {
     }
 
     updateAvatar(event) {
-        console.log(event.srcElement.files);
+        var avatarUrl = ""
+        var reader = new FileReader();
+        reader.onload = (event:any) => {
+            avatarUrl = event.target.result;
+        }
+        reader.readAsDataURL(event.srcElement.files[0]);
+          
+        // console.log(event.srcElement.files);
+        let file = event.srcElement.files[0];
+        // console.log("-------------------");
+        // let files = this.elem.nativeElement.querySelector('#avatar-input').files;
+        // let file = files[0];
+        let formData = new FormData();
+        formData.append('myfile', file, file.name);
+        console.log(formData);
+
+
+        this.AvatarService.upload(formData)
+        .take(1)   // use this operator to unsubscribe after 1 item
+        .subscribe(
+            res => {
+                console.log("upload successfull", res.url);
+                //this.user["avatar"] = res.url.replace(/_original(?![\s\S]*_original)/, "_cover-300x300");
+                this.user["avatar"] = avatarUrl;  // use local image
+            },
+            (error: AppError) => {
+            if (error instanceof BadInput) {
+                // here could add a form error....
+    
+                console.log("Input is not accepted");
+            } else {
+                console.log("yoyo");
+                throw error;  // throw error to be handled by global error handler
+            }
+            }
+        );
+
     }
 
 
