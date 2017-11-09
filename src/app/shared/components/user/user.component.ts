@@ -77,8 +77,9 @@ export class UserComponent implements OnInit {
         .subscribe(
             res => {
                 console.log("upload successfull", res.url);
-                //this.user["avatar"] = res.url.replace(/_original(?![\s\S]*_original)/, "_cover-300x300");
-                this.user["avatar"] = avatarUrl;  // use local image
+                console.log(res);
+                this.user["avatar"] = res.url.replace(/_original(?![\s\S]*_original)/, "_cover-300x300");
+                //this.user["avatar"] = avatarUrl;  // use local image
             },
             (error: AppError) => {
             if (error instanceof BadInput) {
@@ -86,7 +87,6 @@ export class UserComponent implements OnInit {
     
                 console.log("Input is not accepted");
             } else {
-                console.log("yoyo");
                 throw error;  // throw error to be handled by global error handler
             }
             }
