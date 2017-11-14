@@ -59,7 +59,11 @@ export class UserComponent implements OnInit, AfterViewChecked{
 
     clickUpdateAvatar() {
         document.getElementById('avatar-input').click();
-      }
+    }
+
+    clickDeleteAvatar() {
+        console.log("delete Avatar");
+    }
 
     updateAvatar(event) {
         var avatarUrl = ""
