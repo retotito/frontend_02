@@ -1,8 +1,56 @@
-#avatar {
+@import "../../../../styles/_forms.scss";
+
+#account-form {
+    max-width: 400px;
+    margin-left: auto;
+    margin-right: auto;
+}
+
+#avatar-wrapper {
+    position: relative;
     width: 200px;
+    margin-left: auto;
+    margin-right: auto;
+    margin-bottom: 40px;
+}
+
+#avatar {
+    position: relative;
+    width: 100%;
     height: 200px;
-    border: lightblue solid 1px;
+    border: $color-main solid 1px;
     border-radius: 50%;
     background-size: cover;
     background-repeat: no-repeat;
 }
+
+#avatar-input {
+    display: none;
+}
+
+.editAvatar {
+    position: absolute;
+    padding: 4px;
+    height: 20px;
+    display: inline-block;
+    background-color: rgba(0,0,0,0) !important;
+}
+
+.editAvatar i {
+    color: $form-valid-bg;
+}
+
+.editAvatar:hover > i {
+    color: $color-hover;
+}
+
+#updateAvatar  {
+    top: 0px;
+    left: 0px;
+}
+
+#deleteAvatar  {
+    top: 0px;
+    right: 0px;
+}
+

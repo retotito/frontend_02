@@ -1,7 +1,8 @@
 import { Router } from '@angular/router';
-import { Component, OnInit,  ElementRef } from "@angular/core";
+import { AfterViewChecked, Component, ElementRef, OnInit } from '@angular/core';
 import { FormGroup, FormControl, Validators } from "@angular/forms";
 
+import { environment } from '../../../../environments/environment';
 import { UserService } from 'shared/services/user.service';
 import { AvatarService } from 'shared/services/avatar.service';
 import { User } from 'shared/models/user.model';
@@ -9,12 +10,13 @@ import { AppError } from 'app/common/app-error';
 import { BadInput } from 'app/common/bad-input';
 import 'rxjs/add/operator/take';
 
+
 @Component({
   selector: 'app-user',
   templateUrl: './user.component.html',
   styleUrls: ['./user.component.scss']
 })
-export class UserComponent implements OnInit {
+export class UserComponent implements OnInit, AfterViewChecked{
     myForm: FormGroup;
     passwordMinLength = 8;
     translationObject = {
@@ -24,6 +26,7 @@ export class UserComponent implements OnInit {
     authcodeNotValid = false;
     user = {};  // not set to null to avoid a null pointer exeption in the html [(ngModel="")]
     placeholderImg = "assets/images/placeholder.png";
+    environmetUrl = environment.resturl;
 
     constructor(
         private UserService: UserService,
@@ -33,6 +36,7 @@ export class UserComponent implements OnInit {
     ) {}
 
     getUser() {
+        console.log("userId: "+ localStorage.getItem("userId"));
         this.UserService.queryAll(localStorage.getItem("userId"))
         .take(1)   // use this operator to unsubscribe after 1 item
         .subscribe(
@@ -47,12 +51,15 @@ export class UserComponent implements OnInit {
     
                 console.log("Input is not accepted");
             } else {
-                console.log("yoyo");
                 throw error;  // throw error to be handled by global error handler
             }
             }
         );
     }
+
+    clickUpdateAvatar() {
+        document.getElementById('avatar-input').click();
+      }
 
     updateAvatar(event) {
         var avatarUrl = ""
@@ -138,7 +145,7 @@ export class UserComponent implements OnInit {
     }
 
     ngOnInit() {
-      this.getUser();
+        this.getUser();
 
         this.myForm = new FormGroup({
             firstName: new FormControl(null, [ 
@@ -152,6 +159,10 @@ export class UserComponent implements OnInit {
                 Validators.pattern (/^(([^<>()\[\]\\.,;:\s@"]+(\.[^<>()\[\]\\.,;:\s@"]+)*)|(".+"))@((\[[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}])|(([a-zA-Z\-0-9]+\.)+[a-zA-Z]{2,}))$/)
             ])
         });
+    }
+
+    ngAfterViewChecked() {
+    
     }
 
     
