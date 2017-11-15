@@ -59,9 +59,19 @@ export class DataService {
   //     .catch(this.handleError);
   // }
 
+  // update(resource){
+  //   return this.http.patch(this.url + '/' + resource.id, JSON.stringify(resource.title))  // to be dynamic
+  //     .map((res:Response) => res.json())    
+  //     .catch(this.handleError);
+  // }
+
   update(resource){
-    return this.http.patch(this.url + '/' + resource.id, JSON.stringify(resource.title))  // to be dynamic
-      .map((res:Response) => res.json())    
+    let headers = new Headers();
+    headers.append('Content-Type', 'application/json');
+    headers.append('Authorization', this.getToken());
+    
+    return this.http.patch(this.url, JSON.stringify(resource), {headers: headers})
+      .map((res:Response) => res.json())  
       .catch(this.handleError);
   }
  

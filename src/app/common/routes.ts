@@ -11,6 +11,7 @@ import { SigninComponent } from "app/pages/components/authentication/signin/sign
 import { LogoutComponent } from "app/pages/components/authentication/logout/logout.component";
 import { TodosComponent } from "app/pages/components/todos/todos.component";
 import { SasstestComponent } from "app/pages/components/sasstest/sasstest.component";
+import { AdminComponent } from 'app/pages/components/admin/admin.component';
 
 export const ROUTES:  Routes = [
     {path: '',component: PageHomeComponent},
@@ -24,5 +25,6 @@ export const ROUTES:  Routes = [
         { path: '', redirectTo: 'signup', pathMatch: 'full'},
     ]},
     {path: 'todos',component: TodosComponent},
-    {path: 'grid',component: SasstestComponent}
+    {path: 'grid',component: SasstestComponent},
+    {path: 'admin',component: AdminComponent, canActivate: [AuthGuard]}
 ]

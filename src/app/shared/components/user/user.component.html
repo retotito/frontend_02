@@ -14,7 +14,7 @@
                 [style.background-image]="'url(' + (user.avatar ? (environmetUrl+user.avatar) : placeholderImg) + ')'" 
             ></div>
             <button class="editAvatar" id="updateAvatar" (click)="clickUpdateAvatar()"><i class="fa fa-pencil-square-o" aria-hidden="true"></i></button>
-            <button class="editAvatar" id="deleteAvatar" (click)="clickDeleteAvatar()"><i class="fa fa-times" aria-hidden="true"></i></button>
+            <button *ngIf="user.avatar" class="editAvatar" id="deleteAvatar" (click)="clickDeleteAvatar()"><i class="fa fa-times" aria-hidden="true"></i></button>
         </div>
 
 
@@ -54,6 +54,7 @@
                 id="email"
                 class="form-control"
                 formControlName="email"
+                readonly
             >
             <div 
                 *ngIf="myForm.get('email').touched && myForm.get('email').invalid"

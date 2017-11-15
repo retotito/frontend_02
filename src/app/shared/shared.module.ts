@@ -17,6 +17,8 @@ import { TranslateModule } from '@ngx-translate/core';
 import { UserComponent } from './components/user/user.component';
 import { ReactiveFormsModule } from '@angular/forms';
 import { UserService } from 'shared/services/user.service';
+import { CategoriesComponent } from './components/categories/categories.component';
+
 
 @NgModule({
   imports: [
@@ -31,7 +33,8 @@ import { UserService } from 'shared/services/user.service';
     AuthwidgetComponent,
     UploadImageComponent,
     UploadImagesComponent,
-    UserComponent
+    UserComponent,
+    CategoriesComponent
   ],
   exports: [
     LangwidgetComponent,
@@ -39,7 +42,8 @@ import { UserService } from 'shared/services/user.service';
     UploadImageComponent,
     UploadImagesComponent,
     UserComponent,
-    ReactiveFormsModule
+    ReactiveFormsModule,
+    CategoriesComponent
   ],
   providers: [
     AuthService,
@@ -52,3 +56,4 @@ import { UserService } from 'shared/services/user.service';
   ]
 })
 export class SharedModule { }
+//

@@ -14,6 +14,7 @@ import { CommonModule } from '@angular/common';
 import { TranslateModule } from '@ngx-translate/core';
 import { RouterModule } from '@angular/router';
 import { ROUTES } from 'app/common/routes';
+import { AdminComponent } from './components/admin/admin.component';
 
 @NgModule({
   imports: [
@@ -32,7 +33,8 @@ import { ROUTES } from 'app/common/routes';
     SignupComponent,
     SigninComponent,
     LogoutComponent,
-    AuthenticationComponent
+    AuthenticationComponent,
+    AdminComponent
   ],
   exports: [
     PageProjectsComponent,

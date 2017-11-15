@@ -24,7 +24,7 @@ export class UserComponent implements OnInit, AfterViewChecked{
     }
     emailInUse = false;
     authcodeNotValid = false;
-    user = {};  // not set to null to avoid a null pointer exeption in the html [(ngModel="")]
+    user:User = {};  // not set to null to avoid a null pointer exeption in the html [(ngModel="")]
     placeholderImg = "assets/images/placeholder.png";
     environmetUrl = environment.resturl;
 
@@ -62,8 +62,30 @@ export class UserComponent implements OnInit, AfterViewChecked{
     }
 
     clickDeleteAvatar() {
-        console.log("delete Avatar");
+        this.deleteAvatar();
     }
+
+    deleteAvatar() {
+        this.AvatarService.delete("99")
+        .take(1)   
+        .subscribe(
+            res => {
+                console.log("delete successfull", res.url);
+                //console.log(res);
+                this.user["avatar"] = null;
+                //this.user["avatar"] = avatarUrl;  // use local image
+            },
+            (error: AppError) => {
+            if (error instanceof BadInput) {
+                console.log("AppError",error);
+            } else {
+                console.log("ErrorHandler",error);
+                throw error;  // throw error to be handled by global error handler
+            }
+            }
+        );
+    }
+
 
     updateAvatar(event) {
         var avatarUrl = ""
@@ -109,27 +131,28 @@ export class UserComponent implements OnInit, AfterViewChecked{
 
     onSubmit() {
         const user = new User(
-            this.myForm.value.email,
-            this.myForm.value.firstName,
-            this.myForm.value.lastName,
-            this.myForm.value.code
         );
-        //console.log (user);
+        user.firstname = this.myForm.value.firstName;
+        user.lastname = this.myForm.value.lastName,
+        console.log ("update user",user);
+        this.UserService.update(user)
+        .take(1)   // use this operator to unsubscribe after 1 item
+        .subscribe(
+            user => {
+                //this.user = user[0];
+                console.log(user);
+            },
+            (error: AppError) => {
+            if (error instanceof BadInput) {
+                // here could add a form error....
+    
+                console.log("Input is not accepted");
+            } else {
+                throw error;  // throw error to be handled by global error handler
+            }
+            }
+        );
         
-        // this.emailInUse = false;
-        // this.authcodeNotValid = false;
-        // this.authService.signup(user) 
-        //     .subscribe (
-        //         data => {
-        //             console.log(data),
-        //             this.myForm.reset();
-        //             this.router.navigate(['/auth/signin']);
-        //         },
-        //         error => {
-        //             this.errorHandler(error);
-        //             console.log(error);
-        //         }
-        //     );
     }
 
     errorHandler(error) {
