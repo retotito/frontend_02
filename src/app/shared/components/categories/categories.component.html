@@ -1,3 +1,23 @@
-<p>
-  categories works!
-</p>
+<ul>
+<li *ngFor="let categorie of categories | catfilter:'catType':'top'">
+  {{categorie.name.de}}<br>
+  <ul>
+    <li>
+      style
+      <ul>
+        <li *ngFor="let subCategorie of categories | catfilter:'catType':'style':categorie.uniqId">
+            {{subCategorie.name.de}}    
+        </li>  
+      </ul>
+    </li>
+    <li>
+      form
+      <ul>
+        <li *ngFor="let subCategorie of categories | catfilter:'catType':'form':categorie.uniqId">
+            {{subCategorie.name.de}}    
+        </li>  
+      </ul>
+    </li>
+  </ul>
+</li>
+</ul>

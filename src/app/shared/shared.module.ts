@@ -18,6 +18,8 @@ import { UserComponent } from './components/user/user.component';
 import { ReactiveFormsModule } from '@angular/forms';
 import { UserService } from 'shared/services/user.service';
 import { CategoriesComponent } from './components/categories/categories.component';
+import { ApiLaguagesService } from 'shared/services/laguages.service';
+import { CatfilterPipe } from './pipes/catfilter.pipe';
 
 
 @NgModule({
@@ -34,7 +36,8 @@ import { CategoriesComponent } from './components/categories/categories.componen
     UploadImageComponent,
     UploadImagesComponent,
     UserComponent,
-    CategoriesComponent
+    CategoriesComponent,
+    CatfilterPipe
   ],
   exports: [
     LangwidgetComponent,
@@ -52,7 +55,8 @@ import { CategoriesComponent } from './components/categories/categories.componen
     MobileMenuService,
     AuthGuard,
     UserService,
-    AvatarService
+    AvatarService,
+    ApiLaguagesService
   ]
 })
 export class SharedModule { }
