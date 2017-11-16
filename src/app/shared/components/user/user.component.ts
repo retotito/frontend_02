@@ -36,7 +36,6 @@ export class UserComponent implements OnInit, AfterViewChecked{
     ) {}
 
     getUser() {
-        console.log("userId: "+ localStorage.getItem("userId"));
         this.UserService.queryAll(localStorage.getItem("userId"))
         .take(1)   // use this operator to unsubscribe after 1 item
         .subscribe(
