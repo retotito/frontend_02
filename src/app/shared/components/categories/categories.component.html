@@ -1,23 +1,103 @@
-<ul>
-<li *ngFor="let categorie of categories | catfilter:'catType':'top'">
-  {{categorie.name.de}}<br>
+<div id="categoriesAdmin">
   <ul>
-    <li>
-      style
-      <ul>
-        <li *ngFor="let subCategorie of categories | catfilter:'catType':'style':categorie.uniqId">
-            {{subCategorie.name.de}}    
-        </li>  
-      </ul>
-    </li>
-    <li>
-      form
-      <ul>
-        <li *ngFor="let subCategorie of categories | catfilter:'catType':'form':categorie.uniqId">
-            {{subCategorie.name.de}}    
-        </li>  
+    <li *ngFor="let categorie of categories | catfilter:'catType':'top'">
+      <div class="toggleHeader">
+        <a 
+          class="toggleAction"
+          #me 
+          (click)="toggleSelected(me.getAttribute('isselected'), $event)"
+          isselected="false"
+        >
+          <div class="toggleHeaderContent">
+            <p>{{categorie.name | currentlang}}</p>
+            <i *ngIf="me.getAttribute('isselected')=='true'" class="fa fa-angle-down" aria-hidden="true"></i>
+            <i *ngIf="me.getAttribute('isselected')=='false'" class="fa fa-angle-up" aria-hidden="true"></i>
+          </div>
+        </a>
+        <a 
+          class="editAction"
+          (click)="toggleSelected(me3.getAttribute('isselected'), $event)"
+        >
+          <i class="fa fa-pencil-square-o" aria-hidden="true"></i>
+        </a>
+      </div>
+      <ul [@toggleHeight]="me.getAttribute('isselected')">
+        <li>
+          <div class="toggleHeader">
+            <a 
+              class="toggleAction"
+              #me2
+              (click)="toggleSelected(me2.getAttribute('isselected'), $event)"
+              isselected="false"
+            >
+              <div class="toggleHeaderContent">
+                <p>style</p>
+                <i *ngIf="me2.getAttribute('isselected')=='true'" class="fa fa-angle-down" aria-hidden="true"></i>
+                <i *ngIf="me2.getAttribute('isselected')=='false'" class="fa fa-angle-up" aria-hidden="true"></i>
+              </div>
+            </a>
+            <a 
+              class="editAction"
+              (click)="toggleSelected(me3.getAttribute('isselected'), $event)"
+            >
+              <i class="fa fa-pencil-square-o" aria-hidden="true"></i>
+            </a>
+          </div>
+          <ul [@toggleHeight]="me2.getAttribute('isselected')">
+            <li  
+              *ngFor="let subCategorie of categories | catfilter:'catType':'style':categorie.uniqId"
+              class="categoryItem"
+            >
+                <p>{{subCategorie.name | currentlang}}</p>
+                <a 
+                  class="editAction"
+                  (click)="toggleSelected(me3.getAttribute('isselected'), $event)"
+                >
+                  <i class="fa fa-pencil-square-o" aria-hidden="true"></i>
+                </a>  
+            </li>  
+          </ul>
+        </li>
+        <li>
+          <div class="toggleHeader">
+            <a 
+              class="toggleAction"
+              #me3
+              (click)="toggleSelected(me3.getAttribute('isselected'), $event)"
+              isselected="false"
+            >
+              <div class="toggleHeaderContent">
+                <p>form</p>
+                <i *ngIf="me3.getAttribute('isselected')=='true'" class="fa fa-angle-down" aria-hidden="true"></i>
+                <i *ngIf="me3.getAttribute('isselected')=='false'" class="fa fa-angle-up" aria-hidden="true"></i>
+              </div>
+            </a>
+            <a 
+              class="editAction"
+              (click)="toggleSelected(me3.getAttribute('isselected'), $event)"
+            >
+              <i class="fa fa-pencil-square-o" aria-hidden="true"></i>
+            </a>
+          </div>
+          <ul [@toggleHeight]="me3.getAttribute('isselected')">
+            <li 
+              *ngFor="let subCategorie of categories | catfilter:'catType':'form':categorie.uniqId"
+              class="categoryItem"  
+            >
+                <p>{{subCategorie.name | currentlang}}  </p>
+                <a 
+                  class="editAction"
+                  (click)="toggleSelected(me3.getAttribute('isselected'), $event)"
+                >
+                  <i class="fa fa-pencil-square-o" aria-hidden="true"></i>
+                </a>  
+            </li>  
+          </ul>
+        </li>
       </ul>
     </li>
   </ul>
-</li>
-</ul>
+</div>
+
+<button (click)="addTest()">testi add</button>
+

@@ -1,0 +1,92 @@
+@import "../../../../styles/_variables.scss";
+
+#categoriesAdmin {
+    ul {
+        position: relative;
+        overflow: hidden;
+        list-style: none;
+        padding-left: 20px;
+    }
+
+    >ul {
+        padding: 0px;
+    }
+}
+
+
+.toggleHeader {
+    position: relative;
+    padding-right: 30px;
+    margin-bottom: 2px;
+
+    &:hover {
+        .editAction {
+            display: block;
+        }
+    }
+    
+
+    .toggleAction {
+
+        * {
+            pointer-events: none;
+        }
+
+        .toggleHeaderContent {
+            position: relative;
+            padding: 5px 30px 5px 10px;
+            width: 100%;
+            background-color: $color-headings;
+
+            i {
+                position: absolute; 
+                right: 10px;             
+                color: #ffffff;
+                font-size: 24px;
+            }
+    
+            p {
+                color: #ffffff;
+                display: inline-block;
+                margin-bottom: 0px;
+            }
+        }
+    }
+}
+
+.editAction {
+    display: none;
+    position: absolute;
+    right: 0px;
+    top: 5px;
+
+    i {
+        color: $color-headings;
+        font-size: 24px;
+        * {
+            pointer-events: none;
+        }
+    }
+}
+
+.categoryItem {
+    position: relative; 
+    padding-right: 30px;
+
+    p {
+        padding: 3px 5px 3px 8px;
+        margin-bottom: 0px;
+    }
+
+    &:hover {
+        p {
+            background-color: rgba(144, 238, 144, 0.2);
+        }
+    
+        .editAction {
+            display: block;
+        } 
+    }
+}
+
+

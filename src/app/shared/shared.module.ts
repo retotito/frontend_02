@@ -20,6 +20,7 @@ import { UserService } from 'shared/services/user.service';
 import { CategoriesComponent } from './components/categories/categories.component';
 import { ApiLaguagesService } from 'shared/services/laguages.service';
 import { CatfilterPipe } from './pipes/catfilter.pipe';
+import { CurrentlangPipe } from './pipes/currentlang.pipe';
 
 
 @NgModule({
@@ -37,7 +38,8 @@ import { CatfilterPipe } from './pipes/catfilter.pipe';
     UploadImagesComponent,
     UserComponent,
     CategoriesComponent,
-    CatfilterPipe
+    CatfilterPipe,
+    CurrentlangPipe
   ],
   exports: [
     LangwidgetComponent,
