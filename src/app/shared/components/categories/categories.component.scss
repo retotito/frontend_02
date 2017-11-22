@@ -69,6 +69,19 @@
     }
 }
 
+.createAction {
+    margin-left: 8px;
+
+    i {
+        margin-top: 5px;
+        color: $color-headings;
+        font-size: 20px;
+        * {
+            pointer-events: none;
+        }
+    }
+}
+
 .categoryItem {
     position: relative; 
     padding-right: 30px;

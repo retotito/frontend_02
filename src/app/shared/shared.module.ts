@@ -21,6 +21,8 @@ import { CategoriesComponent } from './components/categories/categories.componen
 import { ApiLaguagesService } from 'shared/services/laguages.service';
 import { CatfilterPipe } from './pipes/catfilter.pipe';
 import { CurrentlangPipe } from './pipes/currentlang.pipe';
+import { CatmodalComponent } from './components/categories/catmodal/catmodal.component';
+import { CatmodalService } from 'shared/components/categories/catmodal/catmodal.service';
 
 
 @NgModule({
@@ -39,7 +41,8 @@ import { CurrentlangPipe } from './pipes/currentlang.pipe';
     UserComponent,
     CategoriesComponent,
     CatfilterPipe,
-    CurrentlangPipe
+    CurrentlangPipe,
+    CatmodalComponent
   ],
   exports: [
     LangwidgetComponent,
@@ -48,7 +51,8 @@ import { CurrentlangPipe } from './pipes/currentlang.pipe';
     UploadImagesComponent,
     UserComponent,
     ReactiveFormsModule,
-    CategoriesComponent
+    CategoriesComponent,
+    CatmodalComponent
   ],
   providers: [
     AuthService,
@@ -58,7 +62,8 @@ import { CurrentlangPipe } from './pipes/currentlang.pipe';
     AuthGuard,
     UserService,
     AvatarService,
-    ApiLaguagesService
+    ApiLaguagesService,
+    CatmodalService
   ]
 })
 export class SharedModule { }

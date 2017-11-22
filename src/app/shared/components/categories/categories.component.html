@@ -1,6 +1,6 @@
 <div id="categoriesAdmin">
   <ul>
-    <li *ngFor="let categorie of categories | catfilter:'catType':'top'">
+    <li *ngFor="let categorie of categories | catfilter:'catType':'top'" [attr.uniqId]="categorie.uniqId" class="topCategory">
       <div class="toggleHeader">
         <a 
           class="toggleAction"
@@ -46,6 +46,7 @@
           <ul [@toggleHeight]="me2.getAttribute('isselected')">
             <li  
               *ngFor="let subCategorie of categories | catfilter:'catType':'style':categorie.uniqId"
+              [attr.uniqId]="subCategorie.uniqId"
               class="categoryItem"
             >
                 <p>{{subCategorie.name | currentlang}}</p>
@@ -55,7 +56,14 @@
                 >
                   <i class="fa fa-pencil-square-o" aria-hidden="true"></i>
                 </a>  
-            </li>  
+            </li>
+            <a 
+              #createStyle
+              class="createAction"
+              (click)="createItem('style', createStyle)"
+            >
+              <i class="fa fa-plus"></i>
+            </a>  
           </ul>
         </li>
         <li>
@@ -82,6 +90,7 @@
           <ul [@toggleHeight]="me3.getAttribute('isselected')">
             <li 
               *ngFor="let subCategorie of categories | catfilter:'catType':'form':categorie.uniqId"
+              [attr.uniqId]="subCategorie.uniqId"
               class="categoryItem"  
             >
                 <p>{{subCategorie.name | currentlang}}  </p>
@@ -91,13 +100,30 @@
                 >
                   <i class="fa fa-pencil-square-o" aria-hidden="true"></i>
                 </a>  
-            </li>  
+            </li> 
+            <a 
+              #createForm
+              class="createAction"
+              (click)="createItem('form', createForm)"
+            >
+              <i class="fa fa-plus"></i>
+            </a> 
           </ul>
         </li>
       </ul>
     </li>
   </ul>
+
+  <a 
+    class="createAction"
+    #createTop
+    (click)="createItem('top', createTop)"
+  >
+    <i class="fa fa-plus"></i>
+  </a>
 </div>
 
 <button (click)="addTest()">testi add</button>
+
+<app-catmodal></app-catmodal>
 

@@ -1,0 +1,18 @@
+<div *ngIf="modalService.isOpen" class="rk_overlay">
+  <div class="rk_modalBox">
+    <div class="rk_modalBox_inner">
+        parent: {{modalService.parent}}
+        <br>
+        type: {{modalService.type}}
+        <br>
+        editType: {{modalService.editType}}
+      <div *ngFor="let language of languages" class="languageItem">
+        {{language}}
+        <input type="text">
+      </div>
+
+      <button>save</button>
+      <button (click)="closeModalBox()">close</button>
+    </div>
+  </div>
+</div>

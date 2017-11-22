@@ -10,6 +10,7 @@ import {
   animate,
   transition
 } from '@angular/animations';
+import { CatmodalService } from 'shared/components/categories/catmodal/catmodal.service';
 
 @Component({
   selector: 'app-categories',
@@ -42,7 +43,8 @@ export class CategoriesComponent implements OnInit {
   constructor(
     private languageService: ApiLaguagesService,
     private categoriesService: CategoriesService,
-    private render:Renderer
+    private render:Renderer,
+    public modalService: CatmodalService
   ) { }
 
   addTest() {
@@ -58,8 +60,6 @@ export class CategoriesComponent implements OnInit {
   }
 
   toggleSelected(isSelected, event:any) {
-    console.log(isSelected);
-    console.log("-------------------------");
     var childUL = event.srcElement.parentElement.getElementsByTagName("ul")[0];
     
     
@@ -67,11 +67,24 @@ export class CategoriesComponent implements OnInit {
     if (isSelected == "true") {isSelected = "false"}
     else {isSelected ="true"};
     this.render.setElementAttribute(event.target,"isselected",isSelected);
-    this.render.setElementAttribute(childUL,"isselected",isSelected);
+    //this.render.setElementAttribute(childUL,"isselected",isSelected);
   }
 
   editItem () {
     console.log("yoyo edit");
+  }
+
+  createItem (type:String, item:any) {
+    this.modalService.editType = "create";
+    this.modalService.type = type;
+    if (type == "top"){
+      this.modalService.parent = 0;
+    } else {
+      let parentId = item.parentElement.parentElement.parentElement.parentElement.getAttribute("uniqId");
+      this.modalService.parent = parentId;
+    }
+    
+    this.modalService.isOpen = true;
   }
 
 
@@ -132,15 +145,7 @@ export class CategoriesComponent implements OnInit {
   
 
   ngOnInit() {
-    // this.getLanguages()
-    // .then((resolve)=> {
-    //   console.log(resolve);
-    //   return this.getCategories();
-    // })
-    // .then((resolve)=> {     
-    //   console.log(resolve);
-    //   console.log(this.categories);   
-    // });
+    this.getLanguages();
 
     Promise.all([
       this.getCategories(), 
