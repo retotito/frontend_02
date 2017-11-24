@@ -16,7 +16,7 @@
         </a>
         <a 
           class="editAction"
-          (click)="editItem()"
+          (click)="editItem(categorie)"
         >
           <i class="fa fa-pencil-square-o" aria-hidden="true"></i>
         </a>
@@ -30,18 +30,13 @@
               (click)="toggleSelected(me2.getAttribute('isselected'), $event)"
               isselected="false"
             >
-              <div class="toggleHeaderContent">
+              <div class="toggleHeaderContent catType">
                 <p>style</p>
                 <i *ngIf="me2.getAttribute('isselected')=='true'" class="fa fa-angle-down" aria-hidden="true"></i>
                 <i *ngIf="me2.getAttribute('isselected')=='false'" class="fa fa-angle-up" aria-hidden="true"></i>
               </div>
             </a>
-            <a 
-              class="editAction"
-              (click)="toggleSelected(me3.getAttribute('isselected'), $event)"
-            >
-              <i class="fa fa-pencil-square-o" aria-hidden="true"></i>
-            </a>
+            
           </div>
           <ul [@toggleHeight]="me2.getAttribute('isselected')">
             <li  
@@ -52,7 +47,7 @@
                 <p>{{subCategorie.name | currentlang}}</p>
                 <a 
                   class="editAction"
-                  (click)="toggleSelected(me3.getAttribute('isselected'), $event)"
+                  (click)="editItem(subCategorie)"
                 >
                   <i class="fa fa-pencil-square-o" aria-hidden="true"></i>
                 </a>  
@@ -74,18 +69,13 @@
               (click)="toggleSelected(me3.getAttribute('isselected'), $event)"
               isselected="false"
             >
-              <div class="toggleHeaderContent">
+              <div class="toggleHeaderContent catType">
                 <p>form</p>
                 <i *ngIf="me3.getAttribute('isselected')=='true'" class="fa fa-angle-down" aria-hidden="true"></i>
                 <i *ngIf="me3.getAttribute('isselected')=='false'" class="fa fa-angle-up" aria-hidden="true"></i>
               </div>
             </a>
-            <a 
-              class="editAction"
-              (click)="toggleSelected(me3.getAttribute('isselected'), $event)"
-            >
-              <i class="fa fa-pencil-square-o" aria-hidden="true"></i>
-            </a>
+            
           </div>
           <ul [@toggleHeight]="me3.getAttribute('isselected')">
             <li 
@@ -96,7 +86,7 @@
                 <p>{{subCategorie.name | currentlang}}  </p>
                 <a 
                   class="editAction"
-                  (click)="toggleSelected(me3.getAttribute('isselected'), $event)"
+                  (click)="editItem(subCategorie)"
                 >
                   <i class="fa fa-pencil-square-o" aria-hidden="true"></i>
                 </a>  

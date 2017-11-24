@@ -7,19 +7,19 @@
         <br>
         editType: {{modalItem.editType}}
         <br>
-        object: {{modalItem.object}}
+        langItems: {{modalItem.languageInputs}}
 
         
       <div *ngFor="let language of languages" class="languageItem">
         <div class="languageInput">
           <label>{{language | uppercase}}</label>
-          <input type="text">
+          <input type="text" value="{{modalItem.languageInputs[language]}}">
         </div>
       </div>
 
       <button *ngIf="modalItem.editType == 'create'" (click)="create.emit(getLanguageInputs(domElement))">create</button>
-      <button *ngIf="modalItem.editType == 'update'" (click)="update.emit()">update</button>
-      <button *ngIf="modalItem.editType == 'update'" (click)="delete.emit()">delete</button>
+      <button *ngIf="modalItem.editType == 'edit'" (click)="update.emit()">update</button>
+      <button *ngIf="modalItem.editType == 'edit'" (click)="delete.emit()">delete</button>
       <button (click)="closeModalBox()">cancel</button>
     </div>
   </div>

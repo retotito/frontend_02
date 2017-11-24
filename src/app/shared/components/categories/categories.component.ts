@@ -42,7 +42,7 @@ export class CategoriesComponent implements OnInit {
     editType: "",
     type: "",
     parent: 0,
-    object: {}
+    languageInputs: {}
   };
 
 
@@ -76,8 +76,15 @@ export class CategoriesComponent implements OnInit {
     //this.render.setElementAttribute(childUL,"isselected",isSelected);
   }
 
-  editItem () {
-    console.log("yoyo edit");
+  editItem (selectedItem) {
+    console.log("yoyo edit",selectedItem);
+
+    this.modalItem.editType = "edit";
+    this.modalItem.type = selectedItem.catType;
+    this.modalItem.parent = selectedItem.parent;
+    this.modalItem.languageInputs = selectedItem.name;
+ 
+    this.modalService.isOpen = true;
   }
 
   createItem (type:string, item:any) {
@@ -89,6 +96,7 @@ export class CategoriesComponent implements OnInit {
       let parentId = item.parentElement.parentElement.parentElement.parentElement.getAttribute("uniqId");
       this.modalItem.parent = parentId;
     }
+    this.modalItem.languageInputs = {};
  
     this.modalService.isOpen = true;
   }

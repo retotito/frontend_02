@@ -38,6 +38,10 @@
             width: 100%;
             background-color: $color-headings;
 
+            &.catType {
+                background-color: lightseagreen;
+            }
+
             i {
                 position: absolute; 
                 right: 10px;             
