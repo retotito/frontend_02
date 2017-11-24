@@ -33,6 +33,8 @@ export class DataService {
   }
  
   create(resource){
+    // console.log("res: ",resource);
+    // console.log("resjson: ",JSON.stringify(resource));
     let headers = new Headers();
     headers.append('Content-Type', 'application/json');
     headers.append('Authorization', this.getToken());

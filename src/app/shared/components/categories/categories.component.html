@@ -16,7 +16,7 @@
         </a>
         <a 
           class="editAction"
-          (click)="toggleSelected(me3.getAttribute('isselected'), $event)"
+          (click)="editItem()"
         >
           <i class="fa fa-pencil-square-o" aria-hidden="true"></i>
         </a>
@@ -125,5 +125,10 @@
 
 <button (click)="addTest()">testi add</button>
 
-<app-catmodal></app-catmodal>
+<app-catmodal 
+  [modalItem]="modalItem"
+  (create)="createCategory($event)"
+  (update)="updateCategory($event)"
+  (delete)="deleteCategory($event)"
+></app-catmodal>
 

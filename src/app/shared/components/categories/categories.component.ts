@@ -38,6 +38,12 @@ export class CategoriesComponent implements OnInit {
   categoriesTree: any = [];
   isActive = "true";
   testi = "en";
+  modalItem = {
+    editType: "",
+    type: "",
+    parent: 0,
+    object: {}
+  };
 
 
   constructor(
@@ -74,16 +80,16 @@ export class CategoriesComponent implements OnInit {
     console.log("yoyo edit");
   }
 
-  createItem (type:String, item:any) {
-    this.modalService.editType = "create";
-    this.modalService.type = type;
+  createItem (type:string, item:any) {
+    this.modalItem.editType = "create";
+    this.modalItem.type = type;
     if (type == "top"){
-      this.modalService.parent = 0;
+      this.modalItem.parent = 0;
     } else {
       let parentId = item.parentElement.parentElement.parentElement.parentElement.getAttribute("uniqId");
-      this.modalService.parent = parentId;
+      this.modalItem.parent = parentId;
     }
-    
+ 
     this.modalService.isOpen = true;
   }
 
@@ -139,6 +145,66 @@ export class CategoriesComponent implements OnInit {
   createCategoriesTree = () => {
     
   }
+
+
+  createPostObject(inputs): object{
+    let item = {};
+    item['catType'] = this.modalItem.type;
+    item['parent'] = this.modalItem.parent;
+    for (let input of inputs) {
+      item['name'+input.label] = input.value;
+    }
+    return item;
+  }
+  
+
+  createCategory(data) {
+    this.createPost(this.createPostObject(data))
+      .then((newPost)=> {
+        console.log(newPost);
+        this.modalService.isOpen = false;
+        this.categories.push(newPost);
+    });
+    //console.log(this.createPostObject(data));
+  }
+
+  updateCategory() {
+    console.log("update"); 
+  }
+
+  deleteCategory() {
+    console.log("delete"); 
+  }
+
+  createPost = (postObject)=> { 
+    return new Promise ((resolve, reject)=> {
+      const newPost = postObject;
+      const post = newPost;
+      this.categoriesService.create(post)
+        .subscribe(
+          newPost => {
+            post['_id'] = newPost._id;
+            //this.posts.splice(0,0, post);
+            console.log(newPost);
+            //this.myForm.reset();
+            resolve(newPost);
+          },
+          (error: AppError) => {
+            if (error instanceof BadInput) {
+              // here could add a form error....
+
+              console.log("Input is not accepted");
+              reject('error');
+            } else {
+              reject('error');
+              throw error;  // throw error to be handled by global error handler
+            }
+          }
+        );
+    });
+  }
+  
+
 
   
 
