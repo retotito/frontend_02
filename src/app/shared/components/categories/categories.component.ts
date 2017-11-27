@@ -41,8 +41,9 @@ export class CategoriesComponent implements OnInit {
   modalItem = {
     editType: "",
     type: "",
-    parent: 0,
-    languageInputs: {}
+    parent: {},
+    languageInputs: {},
+    _id: 0
   };
 
 
@@ -77,12 +78,16 @@ export class CategoriesComponent implements OnInit {
   }
 
   editItem (selectedItem) {
-    console.log("yoyo edit",selectedItem);
-
+    console.log("selected",selectedItem);
     this.modalItem.editType = "edit";
     this.modalItem.type = selectedItem.catType;
-    this.modalItem.parent = selectedItem.parent;
+    if (selectedItem.catType != "top") {
+    this.modalItem.parent = this.categories.filter(item => item.uniqId == selectedItem.parent)[0];
+    }
     this.modalItem.languageInputs = selectedItem.name;
+    this.modalItem._id = selectedItem._id;
+
+    console.log(this.modalItem);
  
     this.modalService.isOpen = true;
   }
@@ -94,7 +99,7 @@ export class CategoriesComponent implements OnInit {
       this.modalItem.parent = 0;
     } else {
       let parentId = item.parentElement.parentElement.parentElement.parentElement.getAttribute("uniqId");
-      this.modalItem.parent = parentId;
+      this.modalItem.parent = this.categories.filter(item => item.uniqId == parentId)[0];
     }
     this.modalItem.languageInputs = {};
  
@@ -158,10 +163,11 @@ export class CategoriesComponent implements OnInit {
   createPostObject(inputs): object{
     let item = {};
     item['catType'] = this.modalItem.type;
-    item['parent'] = this.modalItem.parent;
+    item['parent'] = this.modalItem.parent['uniqId'];
     for (let input of inputs) {
       item['name'+input.label] = input.value;
     }
+    item['_id'] = this.modalItem._id;
     return item;
   }
   
@@ -169,18 +175,48 @@ export class CategoriesComponent implements OnInit {
   createCategory(data) {
     this.createPost(this.createPostObject(data))
       .then((newPost)=> {
-        console.log(newPost);
+        //console.log(newPost);
         this.modalService.isOpen = false;
         this.categories.push(newPost);
     });
     //console.log(this.createPostObject(data));
   }
 
-  updateCategory() {
-    console.log("update"); 
+  updateCategory(data) {
+    this.updatePost(this.createPostObject(data))
+      .then((newPost)=> {
+        console.log("updated Post",newPost);
+        this.modalService.isOpen = false;
+      //this.categories.push(newPost);
+    });
   }
 
-  deleteCategory() {
+  updatePost = (postObject)=> { 
+    return new Promise ((resolve, reject)=> {
+      const newPost = postObject;
+      const post = newPost;
+      this.categoriesService.update(post)
+        .subscribe(
+          newPost => {
+            post['_id'] = newPost._id;
+            resolve(newPost);
+          },
+          (error: AppError) => {
+            if (error instanceof BadInput) {
+              // here could add a form error....
+
+              console.log("Input is not accepted");
+              reject('error');
+            } else {
+              reject('error');
+              throw error;  // throw error to be handled by global error handler
+            }
+          }
+        );
+    });
+  }
+
+  deleteCategory(event) {
     console.log("delete"); 
   }
 

@@ -1,26 +1,23 @@
 <div *ngIf="modalService.isOpen" class="rk_overlay">
   <div class="rk_modalBox">
     <div class="rk_modalBox_inner" #domElement>
-        parent: {{modalItem.parent}}
-        <br>
-        type: {{modalItem.type}}
-        <br>
-        editType: {{modalItem.editType}}
-        <br>
-        langItems: {{modalItem.languageInputs}}
-
-        
+      <div class="modalTitle">
+        <span>{{modalItem.editType}} </span>
+        <span *ngIf="modalItem.type == 'top'">Top Category</span>
+        <span *ngIf="modalItem.type != 'top'">{{modalItem.type}} category of {{modalItem.parent.name | currentlang}}</span>
+      </div>
       <div *ngFor="let language of languages" class="languageItem">
-        <div class="languageInput">
+        <div class="languageInput form-field">
           <label>{{language | uppercase}}</label>
           <input type="text" value="{{modalItem.languageInputs[language]}}">
         </div>
       </div>
-
-      <button *ngIf="modalItem.editType == 'create'" (click)="create.emit(getLanguageInputs(domElement))">create</button>
-      <button *ngIf="modalItem.editType == 'edit'" (click)="update.emit()">update</button>
-      <button *ngIf="modalItem.editType == 'edit'" (click)="delete.emit()">delete</button>
-      <button (click)="closeModalBox()">cancel</button>
+      <div class="modalActions">
+        <button *ngIf="modalItem.editType == 'create'" (click)="create.emit(getLanguageInputs(domElement))">create</button>
+        <button *ngIf="modalItem.editType == 'edit'" (click)="update.emit(getLanguageInputs(domElement))">update</button>
+        <button *ngIf="modalItem.editType == 'edit'" (click)="delete.emit()">delete</button>
+        <button (click)="closeModalBox()">cancel</button>
+      </div>
     </div>
   </div>
 </div>

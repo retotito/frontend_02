@@ -1,3 +1,6 @@
+@import "../../../../../styles/_variables.scss";
+@import "../../../../../styles/_forms.scss";
+
 .rk_overlay {
     position: fixed;
     top: 0px;
@@ -20,15 +23,29 @@
     -webkit-box-shadow: 2px 3px 18px 0px rgba(0,0,0,0.75);
     -moz-box-shadow: 2px 3px 18px 0px rgba(0,0,0,0.75);
     box-shadow: 2px 3px 18px 0px rgba(0,0,0,0.75);
+
+    .rk_modalBox_inner {
+        box-sizing: border-box;
+        background-color: #ffffff;
+        max-width: 700px;
+        max-height: 700px;
+        padding: 0px 20px 0px 20px;
+        margin: 20px 0px 20px 0px;
+        overflow-y: auto;
+        padding: 20px;
+
+        .modalTitle {
+            margin-bottom: 20px;
+
+            span {
+                font-size: 20px;
+                color: $color-headings;
+            }
+        }
+
+        .modalActions {
+            margin-top: 20px;
+        }
+    }
 }
 
-.rk_modalBox_inner {
-    box-sizing: border-box;
-    background-color: #ffffff;
-    max-width: 700px;
-    max-height: 700px;
-    padding: 0px 20px 0px 20px;
-    margin: 20px 0px 20px 0px;
-    overflow-y: auto;
-    padding: 20px;
-}

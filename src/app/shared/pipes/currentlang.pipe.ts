@@ -15,7 +15,7 @@ export class CurrentlangPipe implements PipeTransform {
       return multilangObject[this.translate.currentLang];
     }
     else {
-      return multilangObject.de;
+      return "...";
     }
   }
 
