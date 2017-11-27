@@ -18,11 +18,11 @@ import { CatmodalService } from 'shared/components/categories/catmodal/catmodal.
   styleUrls: ['./categories.component.scss'],
   animations: [
         trigger('toggleHeight', [
-            state('true', style({
+            state('false', style({
                 height: '0',
                 //opacity: '0'
             })),
-            state('false', style({
+            state('true', style({
                 height: '*',
                 //opacity: '1'
             })),
@@ -43,7 +43,8 @@ export class CategoriesComponent implements OnInit {
     type: "",
     parent: {},
     languageInputs: {},
-    _id: 0
+    _id: 0,
+    uniqId : 0
   };
 
 
@@ -54,17 +55,6 @@ export class CategoriesComponent implements OnInit {
     public modalService: CatmodalService
   ) { }
 
-  addTest() {
-    console.log("testi");
-    this.categories.push({
-      catType:"style",
-      parent:1510754529708,
-      name:{
-        de:"testi"
-      }
-    });
-    console.log(this.categories);
-  }
 
   toggleSelected(isSelected, event:any) {
     var childUL = event.srcElement.parentElement.getElementsByTagName("ul")[0];
@@ -78,7 +68,6 @@ export class CategoriesComponent implements OnInit {
   }
 
   editItem (selectedItem) {
-    console.log("selected",selectedItem);
     this.modalItem.editType = "edit";
     this.modalItem.type = selectedItem.catType;
     if (selectedItem.catType != "top") {
@@ -86,9 +75,8 @@ export class CategoriesComponent implements OnInit {
     }
     this.modalItem.languageInputs = selectedItem.name;
     this.modalItem._id = selectedItem._id;
+    this.modalItem.uniqId = selectedItem.uniqId;
 
-    console.log(this.modalItem);
- 
     this.modalService.isOpen = true;
   }
 
@@ -175,20 +163,25 @@ export class CategoriesComponent implements OnInit {
   createCategory(data) {
     this.createPost(this.createPostObject(data))
       .then((newPost)=> {
-        //console.log(newPost);
         this.modalService.isOpen = false;
         this.categories.push(newPost);
     });
-    //console.log(this.createPostObject(data));
   }
 
   updateCategory(data) {
     this.updatePost(this.createPostObject(data))
       .then((newPost)=> {
-        console.log("updated Post",newPost);
         this.modalService.isOpen = false;
-      //this.categories.push(newPost);
+        this.updateCategoryLocal(data);
     });
+  }
+
+  updateCategoryLocal(inputs) {
+    let localUpdateItem = this.categories.filter(item => item._id == this.modalItem._id)[0];
+    localUpdateItem.name = {};
+    for (let input of inputs) {
+      localUpdateItem.name[input.label.toLowerCase()] = input.value;
+    }
   }
 
   updatePost = (postObject)=> { 
@@ -216,8 +209,41 @@ export class CategoriesComponent implements OnInit {
     });
   }
 
-  deleteCategory(event) {
-    console.log("delete"); 
+  deleteCategory() {
+    this.deletePost(this.modalItem.uniqId)
+      .then((newPost)=> {
+        this.modalService.isOpen = false;
+        this.deleteCategoryLocal();
+    });
+  }
+
+  deleteCategoryLocal() {  // delete categories and children
+    this.categories = this.categories.filter(item => item.uniqId != this.modalItem.uniqId);
+    this.categories = this.categories.filter(item => item.parent != this.modalItem.uniqId);
+  }
+
+  deletePost = (postObject)=> { 
+    return new Promise ((resolve, reject)=> {
+      const newPost = postObject;
+      const post = newPost;
+      this.categoriesService.delete(post)
+        .subscribe(
+          newPost => {
+            resolve(newPost);
+          },
+          (error: AppError) => {
+            if (error instanceof BadInput) {
+              // here could add a form error....
+
+              console.log("Input is not accepted");
+              reject('error');
+            } else {
+              reject('error');
+              throw error;  // throw error to be handled by global error handler
+            }
+          }
+        );
+    });
   }
 
   createPost = (postObject)=> { 
@@ -229,7 +255,6 @@ export class CategoriesComponent implements OnInit {
           newPost => {
             post['_id'] = newPost._id;
             //this.posts.splice(0,0, post);
-            console.log(newPost);
             //this.myForm.reset();
             resolve(newPost);
           },
@@ -261,7 +286,7 @@ export class CategoriesComponent implements OnInit {
       this.getCategories(), 
       this.getLanguages()
     ]).then((resolve)=> {
-      console.log(this.categories); 
+      //console.log(this.categories); 
     });
   }
 
