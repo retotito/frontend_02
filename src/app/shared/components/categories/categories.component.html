@@ -1,6 +1,6 @@
 <div id="categoriesAdmin">
   <ul>
-    <li *ngFor="let categorie of categories | catfilter:'catType':'top'" [attr.uniqId]="categorie.uniqId" class="topCategory">
+    <li *ngFor="let categorie of categories | catfilter:'catType':'top' | arraysort:'name':'true'" [attr.uniqId]="categorie.uniqId" class="topCategory">
       <div class="toggleHeader">
         <a 
           class="toggleAction"
@@ -31,7 +31,7 @@
               isselected="false"
             >
               <div class="toggleHeaderContent catType">
-                <p>style</p>
+                <p>{{'categories.style' | translate}}</p>
                 <i *ngIf="me2.getAttribute('isselected')=='true'" class="fa fa-angle-down" aria-hidden="true"></i>
                 <i *ngIf="me2.getAttribute('isselected')=='false'" class="fa fa-angle-up" aria-hidden="true"></i>
               </div>
@@ -70,7 +70,7 @@
               isselected="false"
             >
               <div class="toggleHeaderContent catType">
-                <p>form</p>
+                <p>{{'categories.form' | translate}}</p>
                 <i *ngIf="me3.getAttribute('isselected')=='true'" class="fa fa-angle-down" aria-hidden="true"></i>
                 <i *ngIf="me3.getAttribute('isselected')=='false'" class="fa fa-angle-up" aria-hidden="true"></i>
               </div>
@@ -117,6 +117,6 @@
   [modalItem]="modalItem"
   (create)="createCategory($event)"
   (update)="updateCategory($event)"
-  (delete)="deleteCategory($event)"
+  (delete)="deleteCategory()"
 ></app-catmodal>
 

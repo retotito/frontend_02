@@ -19,7 +19,6 @@ export class CatmodalComponent implements OnInit {
   @Output() delete = new EventEmitter();  
 
   clickCreate() {
-    console.log("yoyo");
     this.create.emit();
   }
 

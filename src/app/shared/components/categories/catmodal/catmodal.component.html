@@ -2,9 +2,13 @@
   <div class="rk_modalBox">
     <div class="rk_modalBox_inner" #domElement>
       <div class="modalTitle">
-        <span>{{modalItem.editType}} </span>
-        <span *ngIf="modalItem.type == 'top'">Top Category</span>
-        <span *ngIf="modalItem.type != 'top'">{{modalItem.type}} category of {{modalItem.parent.name | currentlang}}</span>
+        <span *ngIf="modalItem.editType == 'create'">{{'categories.create' | translate}} </span>
+        <span *ngIf="modalItem.editType == 'edit'">{{'categories.edit' | translate}} </span>
+        <span *ngIf="modalItem.type == 'top'">{{'categories.topcategory' | translate}}</span>
+        <span *ngIf="modalItem.type != 'top' && modalItem.type == 'style'"
+        >{{'categories.style' | translate}}-{{'categories.categoryin' | translate}} {{modalItem.parent.name | currentlang}}</span>
+        <span *ngIf="modalItem.type != 'top' && modalItem.type == 'form'"
+        >{{'categories.form' | translate}}-{{'categories.categoryin' | translate}} {{modalItem.parent.name | currentlang}}</span>
       </div>
       <div *ngFor="let language of languages" class="languageItem">
         <div class="languageInput form-field">
@@ -13,10 +17,10 @@
         </div>
       </div>
       <div class="modalActions">
-        <button *ngIf="modalItem.editType == 'create'" (click)="create.emit(getLanguageInputs(domElement))">create</button>
-        <button *ngIf="modalItem.editType == 'edit'" (click)="update.emit(getLanguageInputs(domElement))">update</button>
-        <button *ngIf="modalItem.editType == 'edit'" (click)="delete.emit()">delete</button>
-        <button (click)="closeModalBox()">cancel</button>
+        <button class="actionButton" *ngIf="modalItem.editType == 'create'" (click)="create.emit(getLanguageInputs(domElement))">{{'actions.create' | translate}}</button>
+        <button class="actionButton"*ngIf="modalItem.editType == 'edit'" (click)="update.emit(getLanguageInputs(domElement))">{{'actions.update' | translate}}</button>
+        <button class="actionButton"*ngIf="modalItem.editType == 'edit'" (click)="delete.emit()">{{'actions.delete' | translate}}</button>
+        <button class="actionButton" (click)="closeModalBox()">{{'actions.cancel' | translate}}</button>
       </div>
     </div>
   </div>

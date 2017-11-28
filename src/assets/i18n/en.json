@@ -43,5 +43,19 @@
         "loginError":"Incorrect Email or Password.",
         "profilePhoto":"Profil Photo"
     },
-    "addImages":"add Images"
+    "addImages":"add Images",
+    "actions":{
+        "create":"Create",
+        "update":"Update",
+        "cancel":"Cancel",
+        "delete":"Delete"
+    },
+    "categories":{
+        "create":"Create",
+        "edit":"Edit",
+        "style":"Style",
+        "categoryin":"Category in",
+        "form":"Form",
+        "topcategory":"Top-Category"
+    }
 }

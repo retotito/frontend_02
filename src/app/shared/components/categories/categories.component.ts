@@ -286,7 +286,7 @@ export class CategoriesComponent implements OnInit {
       this.getCategories(), 
       this.getLanguages()
     ]).then((resolve)=> {
-      //console.log(this.categories); 
+      console.log(this.categories); 
     });
   }
 
