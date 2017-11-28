@@ -12,7 +12,7 @@ import { BadInput } from 'app/common/bad-input';
 }) 
 
 export class CatmodalComponent implements OnInit {
-  languages: [any];
+  languages = [];
   @Input() modalItem = {}; 
   @Output() create = new EventEmitter();  
   @Output() update = new EventEmitter();  
@@ -50,7 +50,7 @@ export class CatmodalComponent implements OnInit {
 
   getLanguages = ()=> {
     return new Promise ((resolve, reject) => {
-      if (!this.languageService.languages) {
+        console.log("yoyo");
         this.languageService.getAll()
           .subscribe(
             result => {
@@ -68,11 +68,7 @@ export class CatmodalComponent implements OnInit {
               reject('error loading languages');
             }
           );
-      } else {
-        this.languages = this.languageService.languages;
-
-        resolve();
-      }
+      
     });
   }
 
@@ -82,6 +78,7 @@ export class CatmodalComponent implements OnInit {
 
   ngOnInit() {
     this.getLanguages();
+
   }
 
 }

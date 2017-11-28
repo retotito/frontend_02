@@ -23,7 +23,8 @@
         "Grid":"Grid",
         "Projects":"Projekte",
         "Gallery":"Galerie",
-        "Account":"Konto"
+        "Account":"Konto",
+        "Categories":"Kategorien"
     },
     "Auth": {
         "Email":"Email",

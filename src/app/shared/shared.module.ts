@@ -23,7 +23,6 @@ import { CatfilterPipe } from './pipes/catfilter.pipe';
 import { CurrentlangPipe } from './pipes/currentlang.pipe';
 import { CatmodalComponent } from './components/categories/catmodal/catmodal.component';
 import { CatmodalService } from 'shared/components/categories/catmodal/catmodal.service';
-import { ArraysortPipe } from './pipes/arraysort.pipe';
 
 
 @NgModule({
@@ -43,8 +42,7 @@ import { ArraysortPipe } from './pipes/arraysort.pipe';
     CategoriesComponent,
     CatfilterPipe,
     CurrentlangPipe,
-    CatmodalComponent,
-    ArraysortPipe
+    CatmodalComponent
   ],
   exports: [
     LangwidgetComponent,

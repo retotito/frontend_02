@@ -1,7 +1,7 @@
 export const MAINMENU = [
     {
-        "i18n": "Mainmenu.Grid",
-        "path": "/grid"
+        "i18n": "Mainmenu.Categories",
+        "path": "/categories"
     },
     {
         "i18n": "Mainmenu.Projects",

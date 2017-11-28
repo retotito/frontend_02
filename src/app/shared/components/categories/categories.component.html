@@ -1,6 +1,9 @@
 <div id="categoriesAdmin">
   <ul>
-    <li *ngFor="let categorie of categories | catfilter:'catType':'top' | arraysort:'name':'true'" [attr.uniqId]="categorie.uniqId" class="topCategory">
+    <li *ngFor="let categorie of categories | catfilter:'catType':'top' " 
+        [attr.uniqId]="categorie.uniqId" 
+        class="topCategory"
+    >
       <div class="toggleHeader">
         <a 
           class="toggleAction"
@@ -10,8 +13,8 @@
         >
           <div class="toggleHeaderContent">
             <p>{{categorie.name | currentlang}}</p>
-            <i *ngIf="me.getAttribute('isselected')=='true'" class="fa fa-angle-down" aria-hidden="true"></i>
-            <i *ngIf="me.getAttribute('isselected')=='false'" class="fa fa-angle-up" aria-hidden="true"></i>
+            <i *ngIf="me.getAttribute('isselected')=='true'" class="fa fa-angle-up" aria-hidden="true"></i>
+            <i *ngIf="me.getAttribute('isselected')=='false'" class="fa fa-angle-down" aria-hidden="true"></i>
           </div>
         </a>
         <a 
@@ -32,8 +35,8 @@
             >
               <div class="toggleHeaderContent catType">
                 <p>{{'categories.style' | translate}}</p>
-                <i *ngIf="me2.getAttribute('isselected')=='true'" class="fa fa-angle-down" aria-hidden="true"></i>
-                <i *ngIf="me2.getAttribute('isselected')=='false'" class="fa fa-angle-up" aria-hidden="true"></i>
+                <i *ngIf="me2.getAttribute('isselected')=='true'" class="fa fa-angle-up" aria-hidden="true"></i>
+                <i *ngIf="me2.getAttribute('isselected')=='false'" class="fa fa-angle-down" aria-hidden="true"></i>
               </div>
             </a>
             
@@ -71,8 +74,8 @@
             >
               <div class="toggleHeaderContent catType">
                 <p>{{'categories.form' | translate}}</p>
-                <i *ngIf="me3.getAttribute('isselected')=='true'" class="fa fa-angle-down" aria-hidden="true"></i>
-                <i *ngIf="me3.getAttribute('isselected')=='false'" class="fa fa-angle-up" aria-hidden="true"></i>
+                <i *ngIf="me3.getAttribute('isselected')=='true'" class="fa fa-angle-up" aria-hidden="true"></i>
+                <i *ngIf="me3.getAttribute('isselected')=='false'" class="fa fa-angle-down" aria-hidden="true"></i>
               </div>
             </a>
             
@@ -119,4 +122,5 @@
   (update)="updateCategory($event)"
   (delete)="deleteCategory()"
 ></app-catmodal>
+
 

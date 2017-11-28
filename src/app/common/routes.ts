@@ -25,6 +25,6 @@ export const ROUTES:  Routes = [
         { path: '', redirectTo: 'signup', pathMatch: 'full'},
     ]},
     {path: 'todos',component: TodosComponent},
-    {path: 'grid',component: SasstestComponent},
+    {path: 'categories',component: SasstestComponent},
     {path: 'admin',component: AdminComponent, canActivate: [AuthGuard]}
 ]

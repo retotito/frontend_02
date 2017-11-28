@@ -6,7 +6,7 @@ import { Http } from '@angular/http';
 @Injectable()
 export class ApiLaguagesService extends DataService {
 
-  languages: any;
+  languages: any = {};
   
   constructor(http: Http) {
     super(environment.resturl+'/api/languages', http);

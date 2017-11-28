@@ -3,6 +3,7 @@ import { CategoriesService } from 'shared/services/categories.service';
 import { ApiLaguagesService } from 'shared/services/laguages.service';
 import { AppError } from 'app/common/app-error';
 import { BadInput } from 'app/common/bad-input';
+import { TranslateService } from '@ngx-translate/core';
 import {
   trigger,
   state,
@@ -33,7 +34,7 @@ import { CatmodalService } from 'shared/components/categories/catmodal/catmodal.
 })
 
 export class CategoriesComponent implements OnInit {
-  languages: any = {};
+  languages = [];
   categories: any = [];
   categoriesTree: any = [];
   isActive = "true";
@@ -52,9 +53,23 @@ export class CategoriesComponent implements OnInit {
     private languageService: ApiLaguagesService,
     private categoriesService: CategoriesService,
     private render:Renderer,
-    public modalService: CatmodalService
+    public modalService: CatmodalService,
+    public translate: TranslateService
   ) { }
 
+  // sortCategories() {
+  //   var currentLang = this.translate.currentLang;
+  //   this.categories = this.categories.sort((a: any, b: any) => {
+  //       if(a['catType'] < b['catType']){
+  //         return -1;
+  //       }else if(a['catType'] > b['catType']){
+  //         return 1;
+  //       } else {
+  //         return 0;
+  //       }
+  //     });
+  //   console.log(this.categories);
+  // };
 
   toggleSelected(isSelected, event:any) {
     var childUL = event.srcElement.parentElement.getElementsByTagName("ul")[0];
