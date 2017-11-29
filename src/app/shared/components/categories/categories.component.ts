@@ -57,24 +57,11 @@ export class CategoriesComponent implements OnInit {
     public translate: TranslateService
   ) { }
 
+
   
-  selectSortMehthod() {
-    if (this.modalItem.type == 'top') {
-      this.sortAllCategories();
-    } else {
-      this.sortSubCategories();
-    }
-  }
-
-  sortSubCategories() {   // subcategories from same parent and type
-    console.log("sort Subcategories");
-
-    let type = this.modalItem.type;
-    let parent = this.modalItem.parent;
-  }
 
   sortAllCategories() {
-    var currentLang = this.translate.currentLang;
+    let currentLang = this.translate.currentLang;
     let categories = [];
 
     this.categories.forEach((x) => {    // deep copy to not have conflict with *ngFor
@@ -90,9 +77,9 @@ export class CategoriesComponent implements OnInit {
         b['name'][currentLang] = "";
       }
 
-      if(a['name'][currentLang] < b['name'][currentLang]){
+      if(a['name'][currentLang].toLowerCase() < b['name'][currentLang].toLowerCase()){
         return -1;
-      }else if(a['name'][currentLang] > b['name'][currentLang]){
+      }else if(a['name'][currentLang].toLowerCase() > b['name'][currentLang].toLowerCase()){
         return 1;
       } else {
         return 0;
@@ -100,6 +87,37 @@ export class CategoriesComponent implements OnInit {
     });
     
     this.categories = categories.concat([]);;
+  };
+
+  sortSubCategory() {   // splice item alphabeticaly to index
+    let currentLang = this.translate.currentLang;
+    let categories = this.categories;
+    let uniqId = this.modalItem.uniqId;
+    let parentA = this.modalItem.parent['uniqId'];
+    let typeA = this.modalItem.type;
+    let indexNow = categories.findIndex (p => p.uniqId == uniqId);
+    let indexToBe = indexNow; 
+    let nameByLangA = categories[indexNow]['name'][currentLang].toLowerCase();
+
+    let i = 0;
+    for (let category of this.categories) {
+      let nameByLangB = category['name'][currentLang].toLowerCase();
+      let parentB = category['parent'];
+      let typeB = category['catType'];
+
+      if (typeA == typeB && (parentA == parentB)) {  // compare only same type/parent
+        if (nameByLangA < nameByLangB) {
+          if (i == 0 ) { i = 1;}
+          categories.splice(i-1, 0, categories.splice(indexNow, 1)[0]);
+          break;
+        }
+      }
+      i ++;
+      if (i+1 == categories.length) { 
+        categories.splice(i, 0, categories.splice(indexNow, 1)[0]);
+        break;
+      }
+    }  
   };
 
   toggleSelected(isSelected, event:any) {
@@ -211,7 +229,13 @@ export class CategoriesComponent implements OnInit {
       .then((newPost)=> {
         this.modalService.isOpen = false;
         this.categories.push(newPost);
-        this.selectSortMehthod();
+        this.modalItem.uniqId = newPost['uniqId'];
+
+        if (this.modalItem.type == 'top') {
+          this.sortAllCategories();
+        } else {
+          this.sortSubCategory();
+        }
     });
   }
 
@@ -221,6 +245,12 @@ export class CategoriesComponent implements OnInit {
       .then((newPost)=> {
         this.modalService.isOpen = false;
         this.updateCategoryLocal(data);
+
+        if (this.modalItem.type == 'top') {
+          this.sortAllCategories();
+        } else {
+          this.sortSubCategory();
+        }
     });
   }
 
@@ -339,6 +369,7 @@ export class CategoriesComponent implements OnInit {
       this.getCategories(), 
       this.getLanguages()
     ]).then((resolve)=> {
+      this.sortAllCategories();
       this.listenToLanguageChange();
       console.log(this.categories); 
     });

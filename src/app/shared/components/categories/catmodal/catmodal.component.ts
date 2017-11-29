@@ -50,7 +50,6 @@ export class CatmodalComponent implements OnInit {
 
   getLanguages = ()=> {
     return new Promise ((resolve, reject) => {
-        console.log("yoyo");
         this.languageService.getAll()
           .subscribe(
             result => {
@@ -68,7 +67,6 @@ export class CatmodalComponent implements OnInit {
               reject('error loading languages');
             }
           );
-      
     });
   }
 
