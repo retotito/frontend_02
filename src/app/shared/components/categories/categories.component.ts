@@ -57,19 +57,35 @@ export class CategoriesComponent implements OnInit {
     public translate: TranslateService
   ) { }
 
-  // sortCategories() {
-  //   var currentLang = this.translate.currentLang;
-  //   this.categories = this.categories.sort((a: any, b: any) => {
-  //       if(a['catType'] < b['catType']){
-  //         return -1;
-  //       }else if(a['catType'] > b['catType']){
-  //         return 1;
-  //       } else {
-  //         return 0;
-  //       }
-  //     });
-  //   console.log(this.categories);
-  // };
+  sortAllCategories() {
+    var currentLang = this.translate.currentLang;
+    let categories = [];
+
+    this.categories.forEach((x) => {    // deep copy to not have conflict with *ngFor
+      categories.push(Object.assign({}, x));
+    })
+    categories.map((x) => {x.status = 'DEFAULT'});
+    
+    categories = categories.sort((a: any, b: any) => {
+      if(!a['name'][currentLang]) {   // add key if has none
+        a['name'][currentLang] = "";
+      }
+      if(!b['name'][currentLang]) {   // add key if has none
+        b['name'][currentLang] = "";
+      }
+
+      if(a['name'][currentLang] < b['name'][currentLang]){
+        return -1;
+      }else if(a['name'][currentLang] > b['name'][currentLang]){
+        return 1;
+      } else {
+        return 0;
+      }
+    });
+    
+    this.categories = categories.concat([]);;
+  };
+  
 
   toggleSelected(isSelected, event:any) {
     var childUL = event.srcElement.parentElement.getElementsByTagName("ul")[0];
