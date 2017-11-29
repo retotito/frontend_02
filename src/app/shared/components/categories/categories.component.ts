@@ -3,7 +3,7 @@ import { CategoriesService } from 'shared/services/categories.service';
 import { ApiLaguagesService } from 'shared/services/laguages.service';
 import { AppError } from 'app/common/app-error';
 import { BadInput } from 'app/common/bad-input';
-import { TranslateService } from '@ngx-translate/core';
+import { TranslateService, LangChangeEvent } from '@ngx-translate/core';
 import {
   trigger,
   state,
@@ -57,6 +57,22 @@ export class CategoriesComponent implements OnInit {
     public translate: TranslateService
   ) { }
 
+  
+  selectSortMehthod() {
+    if (this.modalItem.type == 'top') {
+      this.sortAllCategories();
+    } else {
+      this.sortSubCategories();
+    }
+  }
+
+  sortSubCategories() {   // subcategories from same parent and type
+    console.log("sort Subcategories");
+
+    let type = this.modalItem.type;
+    let parent = this.modalItem.parent;
+  }
+
   sortAllCategories() {
     var currentLang = this.translate.currentLang;
     let categories = [];
@@ -85,7 +101,6 @@ export class CategoriesComponent implements OnInit {
     
     this.categories = categories.concat([]);;
   };
-  
 
   toggleSelected(isSelected, event:any) {
     var childUL = event.srcElement.parentElement.getElementsByTagName("ul")[0];
@@ -196,8 +211,10 @@ export class CategoriesComponent implements OnInit {
       .then((newPost)=> {
         this.modalService.isOpen = false;
         this.categories.push(newPost);
+        this.selectSortMehthod();
     });
   }
+
 
   updateCategory(data) {
     this.updatePost(this.createPostObject(data))
@@ -307,7 +324,12 @@ export class CategoriesComponent implements OnInit {
 
 
   
-
+  listenToLanguageChange () { 
+    this.translate.onLangChange.subscribe((event: LangChangeEvent) => {
+      console.log("lang changed");
+      this.sortAllCategories();
+    });
+  }
   
 
   ngOnInit() {
@@ -317,6 +339,7 @@ export class CategoriesComponent implements OnInit {
       this.getCategories(), 
       this.getLanguages()
     ]).then((resolve)=> {
+      this.listenToLanguageChange();
       console.log(this.categories); 
     });
   }
