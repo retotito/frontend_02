@@ -23,7 +23,8 @@
         "Grid":"Grid",
         "Projects":"Projekte",
         "Gallery":"Galerie",
-        "Account":"Konto"
+        "Account":"Konto",
+        "Categories":"Kategorien"
     },
     "Auth": {
         "Email":"Email",
@@ -43,5 +44,21 @@
         "loginError":"Email oder Passwort ist nicht korrekt.",
         "profilePhoto":"Profilfoto"
     },
-    "addImages":"Bilder hinzufügen"
+    "addImages":"Bilder hinzufügen",
+    "actions":{
+        "create":"Erstellen",
+        "update":"Updaten",
+        "cancel":"Abrechen",
+        "delete":"Löschen"
+    },
+    "categories":{
+        "create":"Erstellen einer",
+        "edit":"Editieren der",
+        "style":"Style",
+        "categoryin":"Kategorie in",
+        "form":"Form",
+        "topcategory":"Hauptkategorie",
+        
+        "catManagement":"Kategorien Verwaltung"
+    }
 }
