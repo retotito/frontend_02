@@ -57,6 +57,8 @@
         "style":"Style",
         "categoryin":"Kategorie in",
         "form":"Form",
-        "topcategory":"Hauptkategorie"
+        "topcategory":"Hauptkategorie",
+        
+        "catManagement":"Kategorien Verwaltung"
     }
 }

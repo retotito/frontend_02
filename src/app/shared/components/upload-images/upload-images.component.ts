@@ -43,7 +43,7 @@ export class UploadImagesComponent implements OnInit, OnDestroy {
         
       }
       //this.images = event.target.files;
-      console.log(this.images);
+      //console.log(this.images);
     }
   }
 

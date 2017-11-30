@@ -12,6 +12,7 @@ import {
   transition
 } from '@angular/animations';
 import { CatmodalService } from 'shared/components/categories/catmodal/catmodal.service';
+import { AuthService } from 'shared/services/auth.service';
 
 @Component({
   selector: 'app-categories',
@@ -54,7 +55,8 @@ export class CategoriesComponent implements OnInit {
     private categoriesService: CategoriesService,
     private render:Renderer,
     public modalService: CatmodalService,
-    public translate: TranslateService
+    public translate: TranslateService,
+    private authService: AuthService,
   ) { }
 
 
@@ -207,11 +209,6 @@ export class CategoriesComponent implements OnInit {
     });
   }
 
-  createCategoriesTree = () => {
-    
-  }
-
-
   createPostObject(inputs): object{
     let item = {};
     item['catType'] = this.modalItem.type;
@@ -222,36 +219,75 @@ export class CategoriesComponent implements OnInit {
     item['_id'] = this.modalItem._id;
     return item;
   }
-  
 
   createCategory(data) {
-    this.createPost(this.createPostObject(data))
-      .then((newPost)=> {
-        this.modalService.isOpen = false;
-        this.categories.push(newPost);
-        this.modalItem.uniqId = newPost['uniqId'];
+    if (this.authService.isLoggedIn()){
+      this.createPost(this.createPostObject(data))
+        .then((newPost)=> {
+          this.categories.push(newPost);
+          this.modalItem.uniqId = newPost['uniqId'];
 
-        if (this.modalItem.type == 'top') {
-          this.sortAllCategories();
-        } else {
-          this.sortSubCategory();
-        }
-    });
+          if (this.modalItem.type == 'top') {
+            this.sortAllCategories();
+          } else {
+            this.sortSubCategory();
+          }
+          this.modalService.isOpen = false;
+      });
+    } else {        
+      /* for demo page */                           
+      console.log("demo user");
+      
+      let inputs = data;
+
+      this.modalItem.uniqId = Date.now();
+
+      let item = {};
+      item['catType'] = this.modalItem.type;
+      item['parent'] = this.modalItem.parent['uniqId'];
+      item['name'] = {};
+      for (let input of inputs) {
+        item['name'][input.label.toLowerCase()] = input.value;
+      }
+      item['_id'] = Date.now()+1234;
+      item['uniqId'] = this.modalItem.uniqId;
+
+      this.categories.push(item);
+      
+
+      if (this.modalItem.type == 'top') {
+        this.sortAllCategories();
+      } else {
+        this.sortSubCategory();
+      }
+      this.modalService.isOpen = false;
+    }
   }
 
 
   updateCategory(data) {
-    this.updatePost(this.createPostObject(data))
-      .then((newPost)=> {
-        this.modalService.isOpen = false;
-        this.updateCategoryLocal(data);
-
-        if (this.modalItem.type == 'top') {
-          this.sortAllCategories();
-        } else {
-          this.sortSubCategory();
-        }
-    });
+    if (this.authService.isLoggedIn()){ 
+      this.updatePost(this.createPostObject(data))
+        .then((newPost)=> {
+          this.updateCategoryLocal(data);
+          if (this.modalItem.type == 'top') {
+            this.sortAllCategories();
+          } else {
+            this.sortSubCategory();
+          }
+          this.modalService.isOpen = false;
+      });
+    } else {
+      /* for demo page */
+      console.log("demo user");
+      this.updateCategoryLocal(data);
+      if (this.modalItem.type == 'top') {
+        this.sortAllCategories();
+      } else {
+        this.sortSubCategory();
+      }
+      this.modalService.isOpen = false;
+    }
   }
 
   updateCategoryLocal(inputs) {
@@ -288,11 +324,21 @@ export class CategoriesComponent implements OnInit {
   }
 
   deleteCategory() {
-    this.deletePost(this.modalItem.uniqId)
-      .then((newPost)=> {
-        this.modalService.isOpen = false;
-        this.deleteCategoryLocal();
-    });
+    
+
+    if (this.authService.isLoggedIn()){ 
+      this.deletePost(this.modalItem.uniqId)
+        .then((newPost)=> {
+          this.deleteCategoryLocal();
+          this.modalService.isOpen = false;
+      });
+    } else {
+      /* for demo page */
+      console.log("demo user");
+      this.deleteCategoryLocal();
+      this.modalService.isOpen = false;
+    }
+
   }
 
   deleteCategoryLocal() {  // delete categories and children

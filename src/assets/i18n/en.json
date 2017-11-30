@@ -57,6 +57,8 @@
         "style":"Style",
         "categoryin":"Category in",
         "form":"Form",
-        "topcategory":"Top-Category"
+        "topcategory":"Top-Category",
+
+        "catManagement":"Category Management"
     }
 }
