@@ -23,6 +23,8 @@ import { CatfilterPipe } from './pipes/catfilter.pipe';
 import { CurrentlangPipe } from './pipes/currentlang.pipe';
 import { CatmodalComponent } from './components/categories/catmodal/catmodal.component';
 import { CatmodalService } from 'shared/components/categories/catmodal/catmodal.service';
+import { LocationssearchComponent } from './components/locationssearch/locationssearch.component';
+import { LocationsService } from 'shared/services/locations.service';
 
 
 @NgModule({
@@ -42,7 +44,8 @@ import { CatmodalService } from 'shared/components/categories/catmodal/catmodal.
     CategoriesComponent,
     CatfilterPipe,
     CurrentlangPipe,
-    CatmodalComponent
+    CatmodalComponent,
+    LocationssearchComponent
   ],
   exports: [
     LangwidgetComponent,
@@ -52,7 +55,8 @@ import { CatmodalService } from 'shared/components/categories/catmodal/catmodal.
     UserComponent,
     ReactiveFormsModule,
     CategoriesComponent,
-    CatmodalComponent
+    CatmodalComponent,
+    LocationssearchComponent
   ],
   providers: [
     AuthService,
@@ -63,7 +67,8 @@ import { CatmodalService } from 'shared/components/categories/catmodal/catmodal.
     UserService,
     AvatarService,
     ApiLaguagesService,
-    CatmodalService
+    CatmodalService,
+    LocationsService
   ]
 })
 export class SharedModule { }
