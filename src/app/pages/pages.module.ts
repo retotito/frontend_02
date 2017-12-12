@@ -15,6 +15,7 @@ import { TranslateModule } from '@ngx-translate/core';
 import { RouterModule } from '@angular/router';
 import { ROUTES } from 'app/common/routes';
 import { AdminComponent } from './components/admin/admin.component';
+import { SearchComponent } from './components/search/search.component';
 
 @NgModule({
   imports: [
@@ -34,7 +35,8 @@ import { AdminComponent } from './components/admin/admin.component';
     SigninComponent,
     LogoutComponent,
     AuthenticationComponent,
-    AdminComponent
+    AdminComponent,
+    SearchComponent
   ],
   exports: [
     PageProjectsComponent,

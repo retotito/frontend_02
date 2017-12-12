@@ -51,7 +51,7 @@ export class PageHomeComponent implements OnInit {
       { name:"10",
       status:"open"},
       { name:"11",
-      status:"open"},
+      status:"done"},
  ]
 
   user = {

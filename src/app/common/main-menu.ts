@@ -4,8 +4,8 @@ export const MAINMENU = [
         "path": "/categories"
     },
     {
-        "i18n": "Mainmenu.Projects",
-        "path": "/projects"
+        "i18n": "Mainmenu.Search",
+        "path": "/search"
     },
     {
         "i18n": "Mainmenu.Gallery",
