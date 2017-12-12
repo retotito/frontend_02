@@ -1,12 +1,13 @@
 <div class="wrapper">
   <ul class="thumbnail-wrapper container"
-      [dragula]='"first-bag"' 
-      [dragulaModel]='images'
+      [attr.iscut]="isCut"
   >
     <li *ngFor="let image of images; let i = index">
         <app-upload-image 
             [imgEvent]="image"
+            [oneIsCut]="oneIsCut"
             (onDeleteImage)="deleteImage(image)"
+            (onCutImage)="cutImage(image)"
         >  
         </app-upload-image>
     </li>

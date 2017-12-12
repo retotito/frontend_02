@@ -1,4 +1,5 @@
 import { Component, OnInit, Input, Output, EventEmitter } from '@angular/core';
+import { DomSanitizer } from '@angular/platform-browser';
 
 @Component({
   selector: 'app-upload-image',
@@ -7,17 +8,38 @@ import { Component, OnInit, Input, Output, EventEmitter } from '@angular/core';
 })
 export class UploadImageComponent implements OnInit {
   @Input() imgEvent: any = null;
-  @Output() onDeleteImage = new EventEmitter(); 
+  @Input() oneIsCut: boolean = false;
+  @Output() onDeleteImage = new EventEmitter();
+  @Output() onCutImage = new EventEmitter(); 
   url: any = "assets/images/placeholder.png";
+  isCut:boolean = false;
+  oneiscut = this.oneIsCut;
 
-  constructor() { }
+  constructor(private domSanitizer: DomSanitizer) { }
 
-  deleteImage () {
-    this.onDeleteImage.emit();
+  // deleteImage () {
+  //   this.onDeleteImage.emit();
+  // }
+
+  cutImage () {
+    this.isCut = true;
+    this.onCutImage.emit();
+    console.log("cut");
+  }
+
+  dropImage () {
+    console.log("drop");
   }
 
   readUrl() {
-    if (this.imgEvent) {
+    if (this.imgEvent.src) {
+      this.url = this.imgEvent.src;
+      // this.url = encodeURI(this.imgEvent.src);
+      //       this.url = this.domSanitizer.bypassSecurityTrustResourceUrl(this.imgEvent.src);
+
+      console.log(" " + this.imgEvent.src);
+    }
+    else if (this.imgEvent) {
       var reader = new FileReader();
     
       reader.onload = (event:any) => {
@@ -29,6 +51,7 @@ export class UploadImageComponent implements OnInit {
   }
 
   ngOnInit() {
+    console.log(this.oneIsCut);
     //console.log(this.imgEvent);
     this.readUrl();
   }

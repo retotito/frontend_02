@@ -7,6 +7,10 @@
     cursor: move;
 }
 
+.thumbnail[iscut="true"] {
+    opacity: 0.5;
+}
+
 i {
     position: absolute;
     background-color: lightblue;
@@ -25,11 +29,33 @@ i {
     right: 0px;
 }
 
+.cutThumb {
+    top: 0px;
+    left: 0px;
+}
+
 .editThumb {
     top: 0px;
     left: 0px;
 }
 
-.thumbnail:hover > i {
-    display: block;
+.dropThumb {
+    top: calc(50% - 12px);
+    right: -16px;
+    z-index: 100;
+}
+
+.thumbnail:hover {
+
+    .deleteThumb,
+    .cutThumb {
+        display: block;
+    }
+}
+
+.thumbnail-wrapper[iscut="true"] {
+
+    .dropThumb {
+        display: block;
+    }
 }

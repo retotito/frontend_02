@@ -14,9 +14,18 @@ export class UploadImagesComponent implements OnInit, OnDestroy {
     });
   }
 
-  /* myImageUpload */
   url = "assets/images/placeholder.png";
-  images = [];
+  images:any = [
+    {src: 'assets/images/gallery/pexels1.jpg'},
+    {src: 'assets/images/gallery/pexels2.jpg'},
+    {src: 'assets/images/gallery/pexels3.jpg'},
+    {src: 'assets/images/gallery/pexels4.jpg'},
+    {src: 'assets/images/gallery/pexels5.jpg'},
+    {src: 'assets/images/gallery/pexels6.jpg'}
+  ];
+  isCut = false;
+  oneIsCut = false;
+
 
   // readUrl(event) {
   //   if (event.target.files && event.target.files[0]) {
@@ -43,13 +52,27 @@ export class UploadImagesComponent implements OnInit, OnDestroy {
         
       }
       //this.images = event.target.files;
-      //console.log(this.images);
+      console.log(this.images);
     }
   }
 
   deleteImage(image) {
     let index = this.images.indexOf(image);
     this.images.splice(index, 1);
+  }
+
+  cutImage(image) {
+    
+    let index = this.images.indexOf(image);
+    //this.images[index].isCut=true;
+    this.isCut = true;
+    this.oneIsCut = true;
+    console.log(this.images[index]);
+    
+  }
+
+  dropImage(image) {
+    console.log("drop");
   }
 
 

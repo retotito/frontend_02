@@ -1,13 +1,29 @@
 <div  class="thumbnail" 
-      [style.background-image]="'url(' + url + ')'" 
+      [ngStyle]="{ 'background-image': 'url(' + url + ')'}"
+      [attr.iscut]="isCut"
+      [attr.eImageIsCut]="oneiscut"
 >
-  <i  (click)="onDeleteImage.emit($event.currentTarget)" 
-      class="fa fa-ban deleteThumb" 
-      aria-hidden="true"
-  >
-  </i>
-  <i  class="fa fa-pencil editThumb" 
-      hidden="true"
-  >
-  </i>
+    <i  
+        (click)="onDeleteImage.emit($event.currentTarget)" 
+        class="fa fa-ban deleteThumb" 
+        aria-hidden="true"
+    >
+    </i>
+    <i  
+        (click)="cutImage()" 
+        class="fa fa-arrows cutThumb" 
+        aria-hidden="true"
+    >
+    </i>
+    <i  
+        (click)="dropImage()" 
+        class="fa fa-circle-o-notch dropThumb" 
+        aria-hidden="false"
+    >
+    </i>
+    <i  
+        class="fa fa-pencil editThumb" 
+        hidden="true"
+    >
+    </i>
 </div>
