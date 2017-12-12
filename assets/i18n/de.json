@@ -24,7 +24,8 @@
         "Projects":"Projekte",
         "Gallery":"Galerie",
         "Account":"Konto",
-        "Categories":"Kategorien"
+        "Categories":"Kategorien",
+        "Search":"Elasticsearch"
     },
     "Auth": {
         "Email":"Email",
@@ -60,5 +61,9 @@
         "topcategory":"Hauptkategorie",
         
         "catManagement":"Kategorien Verwaltung"
+    },
+    "elasticsearch":{
+        "heading":"Elasticsearch mit Completion-Suggester",
+        "place":"PLZ / Ort"
     }
 }
