@@ -1,6 +1,17 @@
-<label for="locationssearch">PLZ / Ort</label>
-<input 
-  type="text" 
-  id="locationsearch"
-  (keyup)="searcValueChange($event)" 
->
+<div class="locationSelector">
+  <label for="locationssearch">PLZ / Ort</label>
+  <input 
+    type="text" 
+    id="locationsearch"
+    (keyup)="searchValueChange($event)" 
+    [value]="inputValue"
+  >
+  <ul class="locations">
+    <li
+      *ngFor="let location of locations"
+      (click)="selectLocation(location)"
+    >
+      {{location.name}}
+    </li>
+  </ul>
+</div>
